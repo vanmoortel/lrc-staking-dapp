@@ -1,9 +1,6 @@
 // Key = english version (can be ... if too long)
 // and value = the english version (if not ... key=value)
 
-import {Typography} from "@material-ui/core";
-import React from "react";
-
 export default {
   'Please wait while the application is loading': 'Please wait while the application is loading',
   'If you have any issues please contact': 'If you have any issues please contact',

@@ -7,7 +7,6 @@ import {
 import {onError, onSuccess} from "../../../utils/createAsyncAction";
 import {SETTINGS_LOGOUT} from "../settings/action";
 import {fetchInitial, sendInitial} from "../../../utils/initialStateHelper";
-import {TOKEN_DO_APPROVE} from "../token/action";
 
 const initialState = {
   contract: null,

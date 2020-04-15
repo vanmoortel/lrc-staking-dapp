@@ -1,5 +1,5 @@
 import { PropTypes } from 'prop-types';
-import {fetchContractType, sendContractType} from "../../../utils/type";
+import {sendContractType} from "../../../utils/type";
 
 const propTypes = {
   classes: PropTypes.object.isRequired,

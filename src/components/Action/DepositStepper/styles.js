@@ -1,5 +1,3 @@
-import green from "@material-ui/core/colors/green";
-
 export default (theme) => ({
   root: {
     width: '100%'

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import Web3 from "web3";
 import { Web3ReactProvider } from '@web3-react/core'
@@ -57,9 +57,6 @@ library.add(
  *
  */
 const App = () => {
-  // eslint-disable-next-line no-unused-vars
-  const [isLoading, setIsLoading] = useState(true);
-
 
   return (
     <Web3ReactProvider getLibrary={(provider, connector) => new Web3(provider)}>

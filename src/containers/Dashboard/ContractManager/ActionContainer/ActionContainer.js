@@ -3,14 +3,12 @@ import {useDispatch, useSelector} from "react-redux";
 
 import extProps from './propTypes';
 import languageProvider from '../../../../translations';
-import {useWeb3React} from "@web3-react/core";
 import {Action} from "../../../../components";
 import {tokenDoApprove, tokenGetAllowance, tokenGetBalance} from "../../../../redux/features/token/action";
 import {stakingDoStake, stakingDoClaim, stakingDoWithdraw} from "../../../../redux/features/staking/action";
 
 
-const ActionContainer = ({ classes }) => {
-  const { library } = useWeb3React();
+const ActionContainer = () => {
   const language = useSelector(state => state.settings.language);
   const walletID = useSelector(state => state.settings.walletID);
   const stakingContract = useSelector(state => state.staking.contract);
@@ -24,12 +22,12 @@ const ActionContainer = ({ classes }) => {
   const claim = useSelector(state => state.staking.claim);
   const withdraw = useSelector(state => state.staking.withdraw);
   const dispatch = useDispatch();
-  const getAllowance = useCallback(() => dispatch(tokenGetAllowance(tokenContract, walletAddress.value)), [dispatch, walletAddress]);
-  const getBalance = useCallback(() => dispatch(tokenGetBalance(tokenContract, walletAddress.value)), [dispatch, walletAddress]);
-  const doApprove = useCallback((amount) => dispatch(tokenDoApprove(tokenContract, walletAddress.value, amount)), [dispatch, walletAddress]);
-  const doStake = useCallback((amount) => dispatch(stakingDoStake(stakingContract, walletAddress.value, amount)), [dispatch, walletAddress]);
-  const doClaim = useCallback(() => dispatch(stakingDoClaim(stakingContract, walletAddress.value)), [dispatch, walletAddress]);
-  const doWithdraw = useCallback((amount) => dispatch(stakingDoWithdraw(stakingContract, walletAddress.value, amount)), [dispatch, walletAddress]);
+  const getAllowance = useCallback(() => dispatch(tokenGetAllowance(tokenContract, walletAddress.value)), [dispatch, walletAddress, tokenContract]);
+  const getBalance = useCallback(() => dispatch(tokenGetBalance(tokenContract, walletAddress.value)), [dispatch, walletAddress, tokenContract]);
+  const doApprove = useCallback((amount) => dispatch(tokenDoApprove(tokenContract, walletAddress.value, amount)), [dispatch, walletAddress, tokenContract]);
+  const doStake = useCallback((amount) => dispatch(stakingDoStake(stakingContract, walletAddress.value, amount)), [dispatch, walletAddress, stakingContract]);
+  const doClaim = useCallback(() => dispatch(stakingDoClaim(stakingContract, walletAddress.value)), [dispatch, walletAddress, stakingContract]);
+  const doWithdraw = useCallback((amount) => dispatch(stakingDoWithdraw(stakingContract, walletAddress.value, amount)), [dispatch, walletAddress, stakingContract]);
 
   useEffect(() => {
     if (!!tokenContract && walletAddress.value && !allowance.isLoading && !allowance.isLoaded) getAllowance();

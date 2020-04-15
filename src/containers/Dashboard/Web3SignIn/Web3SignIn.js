@@ -9,7 +9,7 @@ import {useWeb3React} from "@web3-react/core";
 import {saveAddressWalletOrENS, tryToOpenWalletIfNotActive} from "./logic";
 import {Redirect} from "react-router-dom";
 
-const Web3SignIn = ({ classes }) => {
+const Web3SignIn = () => {
   const { library, account, activate, active, error, deactivate } = useWeb3React();
   const language = useSelector(state => state.settings.language);
   const walletID = useSelector(state => state.settings.walletID);

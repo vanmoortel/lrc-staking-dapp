@@ -4,7 +4,7 @@ import {
   TOKEN_SET_CONTRACT,
   TOKEN_DO_APPROVE
 } from './action';
-import {onError, onHashed, onSuccess} from "../../../utils/createAsyncAction";
+import {onError, onSuccess} from "../../../utils/createAsyncAction";
 import {SETTINGS_LOGOUT} from "../settings/action";
 import {fetchInitial, sendInitial} from "../../../utils/initialStateHelper";
 

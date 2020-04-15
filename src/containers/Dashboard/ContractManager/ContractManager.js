@@ -11,7 +11,7 @@ import ProfileContainer from "./ProfileContainer";
 import Action from "./ActionContainer";
 
 
-const ContractManager = ({ classes }) => {
+const ContractManager = () => {
   const language = useSelector(state => state.settings.language);
   const stakingContract = useSelector(state => state.staking.contract);
   const feeContract = useSelector(state => state.fee.contract);

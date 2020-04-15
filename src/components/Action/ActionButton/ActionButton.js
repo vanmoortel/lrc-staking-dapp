@@ -1,8 +1,8 @@
-import React, {useState} from 'react';
+import React from 'react';
 
 import extProps from './propTypes';
 import Button from "@material-ui/core/Button";
-import {ClickAwayListener, Tooltip} from "@material-ui/core";
+import {Tooltip} from "@material-ui/core";
 import numeral from "numeral";
 
 

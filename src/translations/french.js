@@ -1,7 +1,5 @@
 // Key = english version (can be ... if too long) and value = the french version
 
-import React from "react";
-
 export default {
   'Please wait while the application is loading': 'Veuillez patienter pendant le chargement de l\'application',
   'If you have any issues please contact': 'Si vous rencontrez un problème, veuillez contacter',

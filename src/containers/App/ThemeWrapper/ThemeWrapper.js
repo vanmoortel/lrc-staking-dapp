@@ -8,7 +8,7 @@ import extProps from './propTypes';
  * Material-Design theme wrapper loaded with LRC theme
  *
  */
-const ThemeWrapper = ({ classes, children }) => {
+const ThemeWrapper = ({ children }) => {
   const [theme] = useState(themeLRC);
 
   return (

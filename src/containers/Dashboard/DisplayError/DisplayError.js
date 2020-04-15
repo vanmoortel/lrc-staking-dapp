@@ -6,7 +6,7 @@ import languageProvider from '../../../translations';
 import { SnackbarAlert } from '../../../components';
 import {useWeb3React} from "@web3-react/core";
 
-const DisplayError = ({ classes }) => {
+const DisplayError = () => {
   const language = useSelector(state => state.settings.language);
   const approve = useSelector(state => state.token.approve);
   const stake = useSelector(state => state.staking.stake);

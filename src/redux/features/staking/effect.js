@@ -10,7 +10,6 @@ import {
 import {fetchContract, sendContract} from "../../../utils/simpleContractFetching";
 import {put} from "@redux-saga/core/effects";
 import {onError, onSuccess} from "../../../utils/createAsyncAction";
-import {STAKING} from "../../../constants/contract";
 
 const fetchTotalStake = function* (action) {
   yield fetchContract(action, 'total', [], [{from: 0x0}]);

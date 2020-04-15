@@ -1,11 +1,10 @@
-import React, {useEffect, useState} from 'react';
+import React, {useCallback, useEffect} from 'react';
 import {useDispatch, useSelector} from "react-redux";
 import { Container } from '@material-ui/core';
 import { FlagIcon } from 'react-flag-kit';
 
 import extProps from './propTypes';
-import languageProvider from '../../translations';
-import { SnackbarAlert, TranslationButton } from '../../components';
+import {TranslationButton } from '../../components';
 import LANGUAGES from '../../constants/language';
 import {settingsSetLanguage} from "../../redux/features/settings/action";
 import {useWeb3React} from "@web3-react/core";
@@ -16,18 +15,16 @@ import {tokenSetContract} from "../../redux/features/token/action";
 import DisplayError from "./DisplayError";
 
 const Dashboard = ({ classes, children }) => {
-  const language = useSelector(state => state.settings.language);
   const stakingContract = useSelector(state => state.staking.contract);
   const feeContract = useSelector(state => state.fee.contract);
   const tokenContract = useSelector(state => state.token.contract);
   const dispatch = useDispatch();
-  const setLanguage = (_language) => dispatch(settingsSetLanguage(_language));
-  const setContractStaking = (_contract) => dispatch(stakingSetContract(_contract));
-  const setContractFee = (_contract) => dispatch(feeSetContract(_contract));
-  const setContractToken = (_contract) => dispatch(tokenSetContract(_contract));
+  const setLanguage = useCallback(() =>(_language) => dispatch(settingsSetLanguage(_language)), [dispatch]);
+  const setContractStaking = useCallback(() =>(_contract) => dispatch(stakingSetContract(_contract)), [dispatch]);
+  const setContractFee = useCallback(() =>(_contract) => dispatch(feeSetContract(_contract)), [dispatch]);
+  const setContractToken = useCallback(() =>(_contract) => dispatch(tokenSetContract(_contract)), [dispatch]);
   const { library } = useWeb3React();
 
-  const messages = languageProvider[language];
 
   useEffect(() => {
     makeAllSmartContract(library, stakingContract, feeContract, tokenContract, setContractStaking, setContractFee, setContractToken);

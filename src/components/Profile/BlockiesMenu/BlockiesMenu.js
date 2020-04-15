@@ -73,7 +73,7 @@ const BlockiesMenu = React.memo(({ classes, messages, walletAddress, onEditAddre
             <Divider className="w-100" />
             <ListItem button onClick={() => window.open('https://etherscan.io/address/lrctoken.eth', '_blank')}>
               <span className="font-size-sm font-weight-bold">
-                <span className={classes.iconLeft}><img src={lrc} width={14} /></span>{messages['LRC token']}
+                <span className={classes.iconLeft}><img src={lrc} alt="Loopring logo" width={14} /></span>{messages['LRC token']}
               </span>
             </ListItem>
             <ListItem button onClick={() => window.open('https://etherscan.io/address/stakingpool.lrctoken.eth', '_blank')}>
