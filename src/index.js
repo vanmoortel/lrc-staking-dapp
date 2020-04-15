@@ -4,7 +4,6 @@ import { Provider } from 'react-redux';
 import { PersistGate } from 'redux-persist/integration/react';
 import log from 'loglevel';
 import App from './containers/App';
-import { unregister } from './utils/serviceWorker';
 import configureStore from './redux/config';
 
 
@@ -32,9 +31,5 @@ ReactDOM.render(
 );
 log.trace('Render react app done.');
 
-log.trace('Unregister service worker...');
-unregister()
-  .then(() => log.trace('Unregister service worker done.'))
-  .catch(() => log.error('Unregister service worker falied.'));
 
 log.info('Start the webapp done.');
