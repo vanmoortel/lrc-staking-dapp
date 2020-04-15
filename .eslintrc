@@ -1,0 +1,23 @@
+{
+  "extends": [
+    "airbnb",
+    "plugin:testcafe/recommended"
+  ],
+  "parser": "babel-eslint",
+  "env":
+  {
+    "node": true,
+    "es6": true,
+    "browser": true,
+    "jest": true
+  },
+  "plugins": [
+    "testcafe"
+  ],
+  "rules":
+  {
+    "import/no-extraneous-dependencies": "off",
+    "react/jsx-filename-extension": "off",
+    "sort-keys": "error"
+  }
+}
