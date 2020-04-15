@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Manage your stake of Loopring token(stakingpool.lrctoken.eth)",
   "scripts": {
-    "start": "node server.js",
+    "start": "serve -s build",
     "start:dev": "react-scripts start",
     "start:dev-stubs": "cross-env REACT_APP_STUB_ENABLED=true react-scripts start",
     "start:production": "node server/index.js",
@@ -13,7 +13,8 @@
     "test:eslint-fix": "eslint src --fix",
     "test:unit": "react-scripts test",
     "test:e2e": "cross-env REACT_APP_TESTING_URL=localhost:3000 testcafe chrome e2e/*.js --skip-js-errors",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "heroku-postbuild": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,10 +31,10 @@
       "last 1 safari version"
     ]
   },
-  "proxy": "http://localhost:3000",
   "dependencies": {
     "express": "^4.17.1",
-    "path": "^0.12.7"
+    "path": "^0.12.7",
+    "serve": "^11.3.0"
   },
   "devDependencies": {
     "@fortawesome/fontawesome-svg-core": "^1.2.28",
