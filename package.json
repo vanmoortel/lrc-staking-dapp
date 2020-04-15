@@ -3,7 +3,7 @@
   "version": "0.0.0",
   "description": "Manage your stake of Loopring token(stakingpool.lrctoken.eth)",
   "scripts": {
-    "start": "node server/index.js",
+    "start": "node server.js",
     "start:dev": "react-scripts start",
     "start:dev-stubs": "cross-env REACT_APP_STUB_ENABLED=true react-scripts start",
     "start:production": "node server/index.js",
