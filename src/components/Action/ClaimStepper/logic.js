@@ -1,4 +1,5 @@
-export const checkAsyncClaimIsDone = (step, isClaiming, claim, onSetIsClaiming, onSetIsDone, onSetStep) => {
+export const checkAsyncClaimIsDone = (step, isClaiming, claim,
+  onSetIsClaiming, onSetIsDone, onSetStep) => {
   if (step === 1 && !isClaiming && claim.isLoading) onSetIsClaiming(true);
   if (step === 1 && !claim.isLoading && isClaiming) {
     onSetIsClaiming(false);
@@ -7,11 +8,11 @@ export const checkAsyncClaimIsDone = (step, isClaiming, claim, onSetIsClaiming, 
       onSetStep(2);
     }
   }
-}
+};
 
 export const autoRedirect = (isDone, onDone) => {
-  let timer = setTimeout(() => { if (isDone) onDone() }, 10000)
+  const timer = setTimeout(() => { if (isDone) onDone(); }, 10000);
   return () => {
-    clearTimeout(timer)
-  }
-}
+    clearTimeout(timer);
+  };
+};

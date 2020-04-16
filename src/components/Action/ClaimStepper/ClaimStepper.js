@@ -1,13 +1,17 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+  Button, Stepper, Step, StepLabel,
+  StepContent, Typography, CircularProgress,
+} from '@material-ui/core';
+import numeral from 'numeral';
 
 import extProps from './propTypes';
-import {Button, Stepper, Step, StepLabel,
-  StepContent, Typography, CircularProgress} from "@material-ui/core";
-import numeral from "numeral";
-import {checkAsyncClaimIsDone, autoRedirect} from "./logic";
+import { checkAsyncClaimIsDone, autoRedirect } from './logic';
 
 
-const ClaimStepper = ({ classes, messages, pendingReward, onClaim, onDone, claim }) => {
+const ClaimStepper = ({
+  classes, messages, pendingReward, onClaim, onDone, claim,
+}) => {
   const [step, setStep] = useState(0);
   const [isClaiming, setIsClaiming] = useState(false);
   const [isDone, setIsDone] = useState(false);
@@ -18,7 +22,7 @@ const ClaimStepper = ({ classes, messages, pendingReward, onClaim, onDone, claim
 
   useEffect(() => {
     autoRedirect(isDone, onDone);
-    }, [isDone, onDone]);
+  }, [isDone, onDone]);
 
   return (
     <div className={classes.root}>
@@ -31,15 +35,17 @@ const ClaimStepper = ({ classes, messages, pendingReward, onClaim, onDone, claim
               <div>
                 <Button
                   disabled
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <Button
                   disabled={!pendingReward}
                   variant="contained"
                   color="primary"
                   onClick={() => setStep(1)}
-                  className={classes.button}>
+                  className={classes.button}
+                >
                   {messages['I understand']}
                 </Button>
               </div>
@@ -47,18 +53,23 @@ const ClaimStepper = ({ classes, messages, pendingReward, onClaim, onDone, claim
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>{messages['Claim']}</StepLabel>
+          <StepLabel>{messages.Claim}</StepLabel>
           <StepContent>
             <Typography>
-              <span className={`font-weight-bold ${classes.spanAmount}`}>{numeral(pendingReward).format('(0.00a)')} LRC</span>
+              <span className={`font-weight-bold ${classes.spanAmount}`}>
+                {numeral(pendingReward).format('(0.00a)')}
+                {' '}
+                LRC
+              </span>
               {messages['$LRC_AMOUNT will be transferred from your pending reward to your current stake.'].split('$LRC_AMOUNT')[1]}
             </Typography>
             <div className={classes.actionsContainer}>
               <div className={classes.divBackAndConfirm}>
                 <Button
                   onClick={() => setStep(0)}
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <div className={classes.wrapper}>
                   <Button
@@ -66,18 +77,20 @@ const ClaimStepper = ({ classes, messages, pendingReward, onClaim, onDone, claim
                     variant="contained"
                     color="primary"
                     onClick={onClaim}
-                    className={ classes.button}>
-                    { claim.isLoading && messages['Claiming'] }
-                    { !claim.isLoading && messages['Claim'] }
+                    className={classes.button}
+                  >
+                    { claim.isLoading && messages.Claiming }
+                    { !claim.isLoading && messages.Claim }
                   </Button>
-                  { claim.isLoading && (<CircularProgress size={24} className={classes.buttonProgress} />)}
+                  { claim.isLoading
+                  && (<CircularProgress size={24} className={classes.buttonProgress} />)}
                 </div>
               </div>
             </div>
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>{messages['Done']}</StepLabel>
+          <StepLabel>{messages.Done}</StepLabel>
           <StepContent>
             <Typography color="primary">
               {messages['Your pending rewards are now staked.']}

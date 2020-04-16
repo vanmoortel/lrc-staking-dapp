@@ -2,17 +2,17 @@ import {
   TOKEN_GET_BALANCE,
   TOKEN_GET_ALLOWANCE,
   TOKEN_SET_CONTRACT,
-  TOKEN_DO_APPROVE
+  TOKEN_DO_APPROVE,
 } from './action';
-import {onError, onSuccess} from "../../../utils/createAsyncAction";
-import {SETTINGS_LOGOUT} from "../settings/action";
-import {fetchInitial, sendInitial} from "../../../utils/initialStateHelper";
+import { onError, onSuccess } from '../../../utils/createAsyncAction';
+import { SETTINGS_LOGOUT } from '../settings/action';
+import { fetchInitial, sendInitial } from '../../../utils/initialStateHelper';
 
 const initialState = {
-  contract: null,
   allowance: fetchInitial(0),
+  approve: sendInitial(),
   balance: fetchInitial(0),
-  approve: sendInitial()
+  contract: null,
 };
 
 const reducer = (state = initialState, action) => {
@@ -34,94 +34,94 @@ const reducer = (state = initialState, action) => {
         ...state,
         allowance: {
           ...state.allowance,
-          value: 0,
-          isLoading: true,
           error: null,
-        }
+          isLoading: true,
+          value: 0,
+        },
       };
     case onSuccess(TOKEN_GET_ALLOWANCE):
       return {
         ...state,
         allowance: {
           ...state.allowance,
-          value: action.data,
-          isLoading: false,
-          isLoaded: true,
           error: null,
-        }
+          isLoaded: true,
+          isLoading: false,
+          value: action.data,
+        },
       };
     case onError(TOKEN_GET_ALLOWANCE):
       return {
         ...state,
         allowance: {
           ...state.allowance,
-          value: 0,
-          isLoading: false,
-          isLoaded: false,
           error: action.data,
-        }
+          isLoaded: false,
+          isLoading: false,
+          value: 0,
+        },
       };
     case TOKEN_GET_BALANCE:
       return {
         ...state,
         balance: {
           ...state.balance,
-          value: 0,
-          isLoading: true,
           error: null,
-        }
+          isLoading: true,
+          value: 0,
+        },
       };
     case onSuccess(TOKEN_GET_BALANCE):
       return {
         ...state,
         balance: {
           ...state.balance,
-          value: action.data,
-          isLoading: false,
-          isLoaded: true,
           error: null,
-        }
+          isLoaded: true,
+          isLoading: false,
+          value: action.data,
+        },
       };
     case onError(TOKEN_GET_BALANCE):
       return {
         ...state,
         balance: {
           ...state.balance,
-          value: 0,
-          isLoading: false,
-          isLoaded: false,
           error: action.data,
-        }
+          isLoaded: false,
+          isLoading: false,
+          value: 0,
+        },
       };
     case TOKEN_DO_APPROVE:
       return {
         ...state,
         approve: {
           ...state.approve,
+          error: null,
           isLoading: true,
           receipt: null,
-          error: null,
-        }
+        },
       };
     case onSuccess(TOKEN_DO_APPROVE):
       return {
         ...state,
         approve: {
           ...state.approve,
+          error: null,
           isLoading: false,
           receipt: action.data,
-          error: null,
-        }
+        },
       };
     case onError(TOKEN_DO_APPROVE):
       return {
         ...state,
         approve: {
           ...state.approve,
+          error: action.data,
           isLoading: false,
           receipt: null,
-          error: action.data,
-        }
+        },
       };
     default:
       return state;

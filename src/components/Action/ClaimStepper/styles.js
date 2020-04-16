@@ -1,30 +1,30 @@
 export default (theme) => ({
-  root: {
-    width: '100%'
+  actionsContainer: {
+    marginBottom: theme.spacing(2),
   },
   button: {
+    marginRight: theme.spacing(1),
     marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1)
-  },
-  actionsContainer: {
-    marginBottom: theme.spacing(2)
   },
   buttonProgress: {
     color: theme.palette.primary.main,
+    left: '50%',
+    marginLeft: -16,
+    marginTop: -9,
     position: 'absolute',
     top: '50%',
-    left: '50%',
-    marginTop: -9,
-    marginLeft: -16
+  },
+  divBackAndConfirm: {
+    display: 'flex',
+  },
+  root: {
+    width: '100%',
+  },
+  spanAmount: {
+    color: theme.palette.primary.main,
   },
   wrapper: {
     position: 'relative',
-    width: 'fit-content'
-  },
-  spanAmount: {
-    color: theme.palette.primary.main
-  },
-  divBackAndConfirm: {
-    display: 'flex'
+    width: 'fit-content',
   },
 });

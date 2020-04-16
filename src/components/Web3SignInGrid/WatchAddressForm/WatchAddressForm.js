@@ -1,10 +1,10 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React, {useState} from 'react';
+import React, { useState } from 'react';
+import { TextField, Button, CircularProgress } from '@material-ui/core';
+
 import extProps from './propTypes';
-import {TextField, Button, CircularProgress} from "@material-ui/core";
 
 const WatchAddressForm = React.memo(({
-  classes, messages, onConfirm, isLoading
+  classes, messages, onConfirm, isLoading,
 }) => {
   const [walletAddress, setWalletAddress] = useState(false);
 
@@ -27,8 +27,9 @@ const WatchAddressForm = React.memo(({
           variant="contained"
           disabled={!walletAddress || isLoading}
           onClick={() => onConfirm(walletAddress)}
-          className={classes.btnConfirm}>
-          {messages['Confirm']}
+          className={classes.btnConfirm}
+        >
+          {messages.Confirm}
         </Button>
         { isLoading && (<CircularProgress size={26} className={classes.buttonProgress} />)}
       </div>

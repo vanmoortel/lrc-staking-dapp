@@ -2,22 +2,22 @@ import LANGUAGES from '../../../constants/language';
 import {
   SETTINGS_SET_LANGUAGE,
   SETTINGS_SET_WALLET_ID,
-  SETTINGS_SET_WALLET_ADDRESS, SETTINGS_LOGOUT
+  SETTINGS_SET_WALLET_ADDRESS, SETTINGS_LOGOUT,
 } from './action';
-import {onError, onSuccess} from "../../../utils/createAsyncAction";
+import { onError, onSuccess } from '../../../utils/createAsyncAction';
 
 const initialState = {
   language: LANGUAGES.english,
-  walletID: 0,
-  walletAddress: {
-    value: '',
-    isLoading: false,
-    error: null
-  },
   logout: {
+    error: null,
     isLoading: false,
-    error: null
-  }
+  },
+  walletAddress: {
+    error: null,
+    isLoading: false,
+    value: '',
+  },
+  walletID: 0,
 };
 
 const reducer = (state = initialState, action) => {
@@ -37,71 +37,71 @@ const reducer = (state = initialState, action) => {
         ...state,
         walletAddress: {
           ...state.walletAddress,
-          value: '',
+          error: null,
           isLoading: true,
-          error: null
-        }
+          value: '',
+        },
       };
     case onSuccess(SETTINGS_SET_WALLET_ADDRESS):
       return {
         ...state,
         walletAddress: {
           ...state.walletAddress,
-          value: action.data,
+          error: null,
           isLoading: false,
-          error: null
-        }
+          value: action.data,
+        },
       };
     case onError(SETTINGS_SET_WALLET_ADDRESS):
       return {
         ...state,
         walletAddress: {
           ...state.walletAddress,
-          value: '',
+          error: action.data,
           isLoading: false,
-          error: action.data
-        }
+          value: '',
+        },
       };
     case SETTINGS_LOGOUT:
       return {
         ...state,
         logout: {
           ...state.logout,
+          error: null,
           isLoading: true,
-          error: null
-        }
+        },
       };
     case onSuccess(SETTINGS_LOGOUT):
       return {
         ...state,
         logout: {
           ...state.logout,
+          error: null,
           isLoading: false,
-          error: null
         },
-        walletID: action.data,
         walletAddress: {
           ...state.walletAddress,
-          value: '',
+          error: null,
           isLoading: false,
-          error: null
-        }
+          value: '',
+        },
+        walletID: action.data,
       };
     case onError(SETTINGS_LOGOUT):
       return {
         ...state,
         logout: {
           ...state.logout,
+          error: action.data,
           isLoading: false,
-          error: action.data
         },
-        walletID: 0,
         walletAddress: {
           ...state.walletAddress,
-          value: '',
+          error: null,
           isLoading: false,
-          error: null
-        }
+          value: '',
+        },
+        walletID: 0,
       };
     default:
       return state;

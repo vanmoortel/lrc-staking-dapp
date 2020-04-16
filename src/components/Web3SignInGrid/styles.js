@@ -1,37 +1,37 @@
-import hero1 from "../../assets/images/hero-bg/hero-1.jpg";
+import hero1 from '../../assets/images/hero-bg/hero-1.jpg';
 
 export default (theme) => ({
-  loopringImg: {
-    height: '1.7rem'
-  },
   backgroundHero: {
-    backgroundImage: 'url(' + hero1 + ')'
-  },
-  btnSwitchPrev: {
-    position: 'absolute',
-    left: 8,
-    bottom: 2,
-    border: 0,
-    fontSize: '1rem'
-  },
-  btnSwitchNext: {
-    position: 'absolute',
-    right: 8,
-    bottom: 2,
-    border: 0,
-    fontSize: '1rem',
+    backgroundImage: `url(${hero1})`,
   },
   btnBack: {
-    position: 'absolute',
-    left: 8,
-    top: 2,
     border: 0,
-    fontSize: '1rem'
+    fontSize: '1rem',
+    left: 8,
+    position: 'absolute',
+    top: 2,
   },
-  pb40: {
-    paddingBottom: theme.spacing(5)
+  btnSwitchNext: {
+    border: 0,
+    bottom: 2,
+    fontSize: '1rem',
+    position: 'absolute',
+    right: 8,
+  },
+  btnSwitchPrev: {
+    border: 0,
+    bottom: 2,
+    fontSize: '1rem',
+    left: 8,
+    position: 'absolute',
   },
   colorTitleWatch: {
-    color: theme.palette.secondary.main
-  }
+    color: theme.palette.secondary.main,
+  },
+  loopringImg: {
+    height: '1.7rem',
+  },
+  pb40: {
+    paddingBottom: theme.spacing(5),
+  },
 });

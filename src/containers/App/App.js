@@ -1,12 +1,8 @@
 import React from 'react';
 import CssBaseline from '@material-ui/core/CssBaseline';
-import Web3 from "web3";
-import { Web3ReactProvider } from '@web3-react/core'
-import ThemeWrapper from "./ThemeWrapper";
-import Router from "./Router";
-import '../../assets/base.scss';
+import Web3 from 'web3';
+import { Web3ReactProvider } from '@web3-react/core';
 import { library } from '@fortawesome/fontawesome-svg-core';
-
 import {
   fas,
   faBookReader,
@@ -22,10 +18,17 @@ import {
   faExchangeAlt,
   faChartPie,
   faGlobe,
-  faDonate
+  faDonate,
 } from '@fortawesome/free-solid-svg-icons';
-import {far, faQuestionCircle} from "@fortawesome/free-regular-svg-icons";
-import {fab, faEthereum, faTwitter, faDiscord, faFortAwesome} from "@fortawesome/free-brands-svg-icons";
+import { far, faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
+import {
+  fab, faEthereum, faTwitter, faDiscord, faFortAwesome,
+} from '@fortawesome/free-brands-svg-icons';
+
+import ThemeWrapper from './ThemeWrapper';
+import Router from './Router';
+import '../../assets/base.scss';
+
 library.add(
   far,
   fas,
@@ -48,7 +51,7 @@ library.add(
   faExchangeAlt,
   faChartPie,
   faGlobe,
-  faDonate
+  faDonate,
 );
 
 /*
@@ -56,16 +59,13 @@ library.add(
  * Root of the app, initialize theme, reset css(CssBaseline) and initialize router for navigation
  *
  */
-const App = () => {
-
-  return (
-    <Web3ReactProvider getLibrary={(provider, connector) => new Web3(provider)}>
-      <ThemeWrapper>
-        <CssBaseline />
-        <Router />
-      </ThemeWrapper>
-    </Web3ReactProvider>
-  );
-};
+const App = () => (
+  <Web3ReactProvider getLibrary={(provider) => new Web3(provider)}>
+    <ThemeWrapper>
+      <CssBaseline />
+      <Router />
+    </ThemeWrapper>
+  </Web3ReactProvider>
+);
 
 export default App;

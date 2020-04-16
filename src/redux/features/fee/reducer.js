@@ -1,9 +1,6 @@
-import {
-  FEE_SET_CONTRACT,
-  FEE_GET_FEE_STATS
-} from './action';
-import {onError, onSuccess} from "../../../utils/createAsyncAction";
-import {fetchInitial} from "../../../utils/initialStateHelper";
+import { FEE_SET_CONTRACT, FEE_GET_FEE_STATS } from './action';
+import { onError, onSuccess } from '../../../utils/createAsyncAction';
+import { fetchInitial } from '../../../utils/initialStateHelper';
 
 const initialState = {
   contract: null,
@@ -22,32 +19,32 @@ const reducer = (state = initialState, action) => {
         ...state,
         feeStats: {
           ...state.feeStats,
-          value: {},
-          isLoading: true,
           error: null,
-        }
+          isLoading: true,
+          value: {},
+        },
       };
     case onSuccess(FEE_GET_FEE_STATS):
       return {
         ...state,
         feeStats: {
           ...state.feeStats,
-          value: action.data,
-          isLoading: false,
-          isLoaded: true,
           error: null,
-        }
+          isLoaded: true,
+          isLoading: false,
+          value: action.data,
+        },
       };
     case onError(FEE_GET_FEE_STATS):
       return {
         ...state,
         feeStats: {
           ...state.feeStats,
-          value: {},
-          isLoading: false,
-          isLoaded: false,
           error: action.data,
-        }
+          isLoaded: false,
+          isLoading: false,
+          value: {},
+        },
       };
     default:
       return state;

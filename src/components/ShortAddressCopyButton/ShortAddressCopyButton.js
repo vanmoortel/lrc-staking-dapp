@@ -1,9 +1,8 @@
-/* eslint-disable react/jsx-props-no-spreading */
-import React, {useState} from 'react';
-import extProps from './propTypes';
-import {FontAwesomeIcon} from "@fortawesome/react-fontawesome";
-import {Button, ClickAwayListener, Tooltip} from "@material-ui/core";
+import React, { useState } from 'react';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { Button, ClickAwayListener, Tooltip } from '@material-ui/core';
 import copy from 'clipboard-copy';
+import extProps from './propTypes';
 
 const ShortAddressCopyButton = React.memo(({
   classes, messages, walletAddress,
@@ -22,10 +21,13 @@ const ShortAddressCopyButton = React.memo(({
         arrow
         title={messages['Address copied !']}
       >
-        <Button variant="text" className={`font-size-sm font-weight-bold my-2 ${classes.btnWalletAddress}`}
-                onClick={() => { copy(walletAddress); setIsShowCopy(true); }}>
+        <Button
+          variant="text"
+          className={`font-size-sm font-weight-bold my-2 ${classes.btnWalletAddress}`}
+          onClick={() => { copy(walletAddress); setIsShowCopy(true); }}
+        >
           <span className="btn-wrapper--label">
-            {walletAddress.slice(0, 8).toLowerCase() + '...' + walletAddress.slice(walletAddress.length - 6).toLowerCase()}
+            {`${walletAddress.slice(0, 8).toLowerCase()}...${walletAddress.slice(walletAddress.length - 6).toLowerCase()}`}
           </span>
           <span className={`btn-wrapper--icon ${classes.iconCopy}`}>
             <FontAwesomeIcon

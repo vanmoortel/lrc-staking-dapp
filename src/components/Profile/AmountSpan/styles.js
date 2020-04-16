@@ -1,13 +1,13 @@
 export default (theme) => ({
+  amount: {
+    color: theme.palette.secondary.main,
+  },
   loopringLogo: {
     marginBottom: 'auto',
+    marginRight: 4,
     marginTop: 'auto',
-    marginRight: 4
-  },
-  amount: {
-    color: theme.palette.secondary.main
   },
   pr16: {
-    paddingRight: theme.spacing(2)
-  }
+    paddingRight: theme.spacing(2),
+  },
 });

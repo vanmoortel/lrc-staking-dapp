@@ -1,5 +1,2 @@
-export default (theme) => ({
-  imgAction: {
-    height: 80
-  },
+export default () => ({
 });

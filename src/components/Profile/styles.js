@@ -1,5 +1,5 @@
-export default (theme) => ({
+export default () => ({
   divYourStake: {
-    marginTop: 16
-  }
+    marginTop: 16,
+  },
 });

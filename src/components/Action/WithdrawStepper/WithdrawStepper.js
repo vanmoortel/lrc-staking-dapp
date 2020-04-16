@@ -1,14 +1,18 @@
-import React, {useEffect, useState} from 'react';
+import React, { useEffect, useState } from 'react';
+import {
+  TextField, Button, Stepper, Step, StepLabel,
+  StepContent, Typography, Slider, CircularProgress,
+} from '@material-ui/core';
+import numeral from 'numeral';
+import BigNumber from 'bignumber.js';
 
 import extProps from './propTypes';
-import {TextField, Button, Stepper, Step, StepLabel,
-  StepContent, Typography, Slider, CircularProgress} from "@material-ui/core";
-import numeral from "numeral";
-import BigNumber from "bignumber.js";
-import {checkAsyncWithdrawIsDone, timeoutRedirect} from "./logic";
+import { checkAsyncWithdrawIsDone, timeoutRedirect } from './logic';
 
 
-const WithdrawStepper = ({ classes, messages, maxAmount, onWithdraw, withdraw, onDone }) => {
+const WithdrawStepper = ({
+  classes, messages, maxAmount, onWithdraw, withdraw, onDone,
+}) => {
   const [step, setStep] = useState(0);
   const [amount, setAmount] = useState(0);
   const [isWithdrawing, setIsWithdrawing] = useState(false);
@@ -20,7 +24,7 @@ const WithdrawStepper = ({ classes, messages, maxAmount, onWithdraw, withdraw, o
 
   useEffect(() => {
     timeoutRedirect(isDone, onDone);
-    }, [isDone, onDone]);
+  }, [isDone, onDone]);
 
   return (
     <div className={classes.root}>
@@ -33,14 +37,16 @@ const WithdrawStepper = ({ classes, messages, maxAmount, onWithdraw, withdraw, o
               <div>
                 <Button
                   disabled
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => setStep(1)}
-                  className={classes.button}>
+                  className={classes.button}
+                >
                   {messages['I understand']}
                 </Button>
               </div>
@@ -69,7 +75,7 @@ const WithdrawStepper = ({ classes, messages, maxAmount, onWithdraw, withdraw, o
               aria-labelledby="discrete-slider-restrict"
               step={null}
               valueLabelDisplay="auto"
-              marks={[{value: 0, label: '0%'}, {value: 25, label: '25%'}, {value: 50, label: '50%'}, {value: 75, label: '75%'}, {value: 100, label: '100%'}]}
+              marks={[{ label: '0%', value: 0 }, { label: '25%', value: 25 }, { label: '50%', value: 50 }, { label: '75%', value: 75 }, { label: '100%', value: 100 }]}
               className={classes.sliderAmount}
               onChange={(_, value) => setAmount(maxAmount * (value / 100))}
             />
@@ -77,53 +83,62 @@ const WithdrawStepper = ({ classes, messages, maxAmount, onWithdraw, withdraw, o
               <div>
                 <Button
                   disabled
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <Button
                   disabled={!amount}
                   variant="contained"
                   color="primary"
                   onClick={() => setStep(2)}
-                  className={classes.button}>
-                  {messages['Next']}
+                  className={classes.button}
+                >
+                  {messages.Next}
                 </Button>
               </div>
             </div>
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>{messages['Withdraw']}</StepLabel>
+          <StepLabel>{messages.Withdraw}</StepLabel>
           <StepContent>
             <Typography>
-              <span className={`font-weight-bold ${classes.spanAmount}`}>{numeral(amount).format('(0.00a)')} LRC</span>
+              <span className={`font-weight-bold ${classes.spanAmount}`}>
+                {numeral(amount).format('(0.00a)')}
+                {' '}
+                LRC
+              </span>
               {messages['$LRC_AMOUNT will be transferred from your stake to your wallet.'].split('$LRC_AMOUNT')[1]}
             </Typography>
             <div className={classes.actionsContainer}>
               <div className={classes.divBackAndConfirm}>
                 <Button
                   onClick={() => setStep(1)}
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <div className={classes.wrapper}>
                   <Button
                     disabled={withdraw.isLoading}
                     variant="contained"
                     color="primary"
-                    onClick={() => onWithdraw(new BigNumber(amount * (10**18)).toFixed(0))}
-                    className={ classes.button}>
-                    { withdraw.isLoading && messages['Withdrawing'] }
-                    { !withdraw.isLoading && messages['Withdraw'] }
+                    onClick={() => onWithdraw(new BigNumber(amount * (10 ** 18)).toFixed(0))}
+                    className={classes.button}
+                  >
+                    { withdraw.isLoading && messages.Withdrawing }
+                    { !withdraw.isLoading && messages.Withdraw }
                   </Button>
-                  { withdraw.isLoading && (<CircularProgress size={24} className={classes.buttonProgress} />)}
+                  { withdraw.isLoading
+                  && (<CircularProgress size={24} className={classes.buttonProgress} />)}
                 </div>
               </div>
             </div>
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>{messages['Done']}</StepLabel>
+          <StepLabel>{messages.Done}</StepLabel>
           <StepContent>
             <Typography color="primary">
               {messages['Your withdrawal has been processed, we hope to see you soon :(']}

@@ -1,11 +1,11 @@
-export default (theme) => ({
+export default () => ({
   btnWalletAddress: {
+    display: 'block',
     marginLeft: 'auto',
     marginRight: 'auto',
-    display: 'block'
   },
   iconCopy: {
-    verticalAlign: 'top',
     marginLeft: '0.2rem',
+    verticalAlign: 'top',
   },
 });

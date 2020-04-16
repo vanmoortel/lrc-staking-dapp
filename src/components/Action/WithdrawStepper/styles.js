@@ -1,38 +1,38 @@
 export default (theme) => ({
-  root: {
-    width: '100%'
+  actionsContainer: {
+    marginBottom: theme.spacing(2),
   },
   button: {
+    marginRight: theme.spacing(1),
     marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1)
-  },
-  actionsContainer: {
-    marginBottom: theme.spacing(2)
   },
   buttonProgress: {
     color: theme.palette.primary.main,
+    left: '50%',
+    marginLeft: -16,
+    marginTop: -9,
     position: 'absolute',
     top: '50%',
-    left: '50%',
-    marginTop: -9,
-    marginLeft: -16
+  },
+  divBackAndConfirm: {
+    display: 'flex',
+  },
+  inputLRC: {
+    marginBottom: 8,
+    marginTop: 16,
+    width: '60%',
+  },
+  root: {
+    width: '100%',
+  },
+  sliderAmount: {
+    width: '60%',
+  },
+  spanAmount: {
+    color: theme.palette.primary.main,
   },
   wrapper: {
     position: 'relative',
-    width: 'fit-content'
-  },
-  inputLRC: {
-    marginTop: 16,
-    marginBottom: 8,
-    width: '60%'
-  },
-  sliderAmount: {
-    width: '60%'
-  },
-  spanAmount: {
-    color: theme.palette.primary.main
-  },
-  divBackAndConfirm: {
-    display: 'flex'
+    width: 'fit-content',
   },
 });

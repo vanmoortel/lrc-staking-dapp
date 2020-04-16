@@ -9,17 +9,17 @@ export const tokenSetContract = (contract) => ({
 });
 
 export const tokenGetAllowance = (contract, address) => ({
-  data: { contract, address },
+  data: { address, contract },
   type: TOKEN_GET_ALLOWANCE,
 });
 
 export const tokenGetBalance = (contract, address) => ({
-  data: { contract, address },
+  data: { address, contract },
   type: TOKEN_GET_BALANCE,
 });
 
 
 export const tokenDoApprove = (contract, address, amount) => ({
-  data: { contract, address, amount },
+  data: { address, amount, contract },
   type: TOKEN_DO_APPROVE,
 });

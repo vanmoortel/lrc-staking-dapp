@@ -1,10 +1,10 @@
 import { PropTypes } from 'prop-types';
 
 const propTypes = {
-  isOpen: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
-  severity: PropTypes.string.isRequired,
+  isOpen: PropTypes.bool.isRequired,
   onClose: PropTypes.func.isRequired,
+  severity: PropTypes.string.isRequired,
 };
 
 export default propTypes;

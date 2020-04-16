@@ -1,72 +1,75 @@
-import React, {useEffect, useState} from 'react';
-import {Grid} from '@material-ui/core';
+import React, { useEffect, useState } from 'react';
+import { Grid } from '@material-ui/core';
+import Chart from 'react-apexcharts';
+import Skeleton from '@material-ui/lab/Skeleton';
+
 import extProps from './propTypes';
-import Chart from "react-apexcharts";
-import ShortAddressCopyButton from "../ShortAddressCopyButton";
-import StakeProfileMenu from "./BlockiesMenu";
-import AmountSpan from "./AmountSpan";
-import Skeleton from "@material-ui/lab/Skeleton";
+import ShortAddressCopyButton from '../ShortAddressCopyButton';
+import StakeProfileMenu from './BlockiesMenu';
+import AmountSpan from './AmountSpan';
 
 const defaultOption = {
   chart: {
-    toolbar: {
-      show: false
-    },
     sparkline: {
-      enabled: true
-    }
+      enabled: true,
+    },
+    toolbar: {
+      show: false,
+    },
   },
+  colors: ['#5383ff'],
   dataLabels: {
-    enabled: false
-  },
-  plotOptions: {
-    bar: {
-      horizontal: false,
-      endingShape: 'rounded',
-      columnWidth: '70%'
-    }
-  },
-  stroke: {
-    show: true,
-    color: '#495368',
-    curve: 'smooth',
-    width: 2
+    enabled: false,
   },
   fill: {
     color: '#5383ff',
     gradient: {
-      shade: 'light',
-      type: 'vertical',
-      shadeIntensity: 0.3,
       inverseColors: false,
       opacityFrom: 1,
       opacityTo: 0,
-      stops: [0, 100]
-    }
-  },
-  colors: ['#5383ff'],
-  legend: {
-    show: false
+      shade: 'light',
+      shadeIntensity: 0.3,
+      stops: [0, 100],
+      type: 'vertical',
+    },
   },
   labels: [],
+  legend: {
+    show: false,
+  },
+  plotOptions: {
+    bar: {
+      columnWidth: '70%',
+      endingShape: 'rounded',
+      horizontal: false,
+    },
+  },
+  stroke: {
+    color: '#495368',
+    curve: 'smooth',
+    show: true,
+    width: 2,
+  },
   xaxis: {
     crosshairs: {
-      width: 1
-    }
+      width: 1,
+    },
   },
   yaxis: {
-    min: 0
-  }
+    min: 0,
+  },
 };
 const defaultData = [
   {
+    data: [],
     name: 'Token',
-    data: []
-  }
+  },
 ];
 
-const Profile = React.memo(({ classes, messages, walletAddress, stake, pendingReward, tokenAge,
-                                   stakeTotal, feesTotal, share, tokenAgeList, onEditAddress, onLogout, isLoading, isChartLoading }) => {
+const Profile = React.memo(({
+  classes, messages, walletAddress, stake, pendingReward, tokenAge,
+  stakeTotal, feesTotal, share, tokenAgeList, onEditAddress, onLogout, isLoading, isChartLoading,
+}) => {
   const [chartData, setChartData] = useState(defaultData);
   const [chartOption, setChartOption] = useState(defaultOption);
 
@@ -74,7 +77,7 @@ const Profile = React.memo(({ classes, messages, walletAddress, stake, pendingRe
     if (!!tokenAgeList && !!tokenAgeList.length && !chartData[0].data.length) {
       setChartOption({
         ...chartOption,
-        labels: tokenAgeList.map((_, i) => (tokenAgeList.length - i) + ' Day')
+        labels: tokenAgeList.map((_, i) => `${tokenAgeList.length - i} Day`),
       });
       setChartData([{
         ...chartData[0],
@@ -85,7 +88,12 @@ const Profile = React.memo(({ classes, messages, walletAddress, stake, pendingRe
 
   return (
     <>
-      <StakeProfileMenu messages={messages} walletAddress={walletAddress} onLogout={onLogout} onEditAddress={onEditAddress} />
+      <StakeProfileMenu
+        messages={messages}
+        walletAddress={walletAddress}
+        onLogout={onLogout}
+        onEditAddress={onEditAddress}
+      />
       <ShortAddressCopyButton messages={messages} walletAddress={walletAddress} />
       <div className={classes.divYourStake}>
         <AmountSpan title={messages['Your Stake']} number={stake} messages={messages} isShowLoopring isXl isLoading={isLoading} />
@@ -116,9 +124,9 @@ const Profile = React.memo(({ classes, messages, walletAddress, stake, pendingRe
       <Grid container spacing={4}>
         <Grid item xs={12}>
           <div className="card-header border-0 d-block">
-              <span className="text-uppercase pb-1 pt-1 text-black d-block text-center font-weight-bold font-size-lg">
-                {messages['Staked Tokens Age Distribution']}
-              </span>
+            <span className="text-uppercase pb-1 pt-1 text-black d-block text-center font-weight-bold font-size-lg">
+              {messages['Staked Tokens Age Distribution']}
+            </span>
           </div>
           { !!chartData[0].data.length && !isChartLoading ? (
             <Chart

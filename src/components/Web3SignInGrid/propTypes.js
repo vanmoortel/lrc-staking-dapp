@@ -2,11 +2,11 @@ import { PropTypes } from 'prop-types';
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
+  isLoading: PropTypes.bool.isRequired,
   messages: PropTypes.object.isRequired,
-  walletLoading: PropTypes.number.isRequired,
   onSelectWallet: PropTypes.func.isRequired,
   onUpdateWalletAddress: PropTypes.func.isRequired,
-  isLoading: PropTypes.bool.isRequired,
+  walletLoading: PropTypes.number.isRequired,
 };
 
 export default propTypes;

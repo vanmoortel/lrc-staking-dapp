@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { ThemeProvider } from '@material-ui/styles';
-import themeLRC from '../../../theme/';
+import themeLRC from '../../../theme';
 import extProps from './propTypes';
 
 /*
@@ -13,7 +13,7 @@ const ThemeWrapper = ({ children }) => {
 
   return (
     <ThemeProvider theme={theme}>
-        { children }
+      { children }
     </ThemeProvider>
   );
 };

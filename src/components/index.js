@@ -20,5 +20,5 @@ export {
   ShortAddressCopyButton,
   Action,
 
-  SnackbarAlert
+  SnackbarAlert,
 };

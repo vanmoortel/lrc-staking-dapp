@@ -1,48 +1,48 @@
 export default (theme) => ({
-  root: {
-    width: '100%'
+  actionsContainer: {
+    marginBottom: theme.spacing(2),
   },
   button: {
+    marginRight: theme.spacing(1),
     marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1)
-  },
-  actionsContainer: {
-    marginBottom: theme.spacing(2)
   },
   buttonProgress: {
     color: theme.palette.primary.main,
+    left: '50%',
+    marginLeft: -16,
+    marginTop: -9,
     position: 'absolute',
     top: '50%',
-    left: '50%',
-    marginTop: -9,
-    marginLeft: -16
+  },
+  divBackAndConfirm: {
+    display: 'flex',
+  },
+  divConfetti: {
+    height: '100%',
+    left: 0,
+    overflowX: 'hidden',
+    overflowY: 'hidden',
+    pointerEvents: 'none',
+    position: 'fixed',
+    top: 0,
+    width: '100%',
+  },
+  inputLRC: {
+    marginBottom: 8,
+    marginTop: 16,
+    width: '60%',
+  },
+  root: {
+    width: '100%',
+  },
+  sliderAmount: {
+    width: '60%',
+  },
+  spanAmount: {
+    color: theme.palette.primary.main,
   },
   wrapper: {
     position: 'relative',
-    width: 'fit-content'
+    width: 'fit-content',
   },
-  inputLRC: {
-    marginTop: 16,
-    marginBottom: 8,
-    width: '60%'
-  },
-  sliderAmount: {
-    width: '60%'
-  },
-  spanAmount: {
-    color: theme.palette.primary.main
-  },
-  divBackAndConfirm: {
-    display: 'flex'
-  },
-  divConfetti: {
-    position: 'fixed',
-    top: 0,
-    left: 0,
-    height: '100%',
-    width: '100%',
-    overflowX: 'hidden',
-    overflowY: 'hidden',
-    pointerEvents: 'none'
-  }
 });

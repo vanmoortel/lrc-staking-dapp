@@ -1,2 +1,4 @@
-export const fetchInitial = (defaultValue) => ({ value: defaultValue, isLoading: false, isLoaded: false, error: null});
-export const sendInitial = () => ({ receipt: null, isLoading: false, error: null});
+export const fetchInitial = (defaultValue) => ({
+  error: null, isLoaded: false, isLoading: false, value: defaultValue,
+});
+export const sendInitial = () => ({ error: null, isLoading: false, receipt: null });

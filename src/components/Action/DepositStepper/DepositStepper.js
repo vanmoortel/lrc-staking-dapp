@@ -1,16 +1,20 @@
-import React, {useEffect, useState} from 'react';
-
-import extProps from './propTypes';
-import {TextField, Button, Stepper, Step, StepLabel,
-  StepContent, Typography, Slider, CircularProgress} from "@material-ui/core";
-import numeral from "numeral";
-import BigNumber from "bignumber.js";
+import React, { useEffect, useState } from 'react';
+import {
+  TextField, Button, Stepper, Step, StepLabel,
+  StepContent, Typography, Slider, CircularProgress,
+} from '@material-ui/core';
+import numeral from 'numeral';
+import BigNumber from 'bignumber.js';
 import useWindowSize from 'react-use/lib/useWindowSize';
 import Confetti from 'react-confetti';
-import {checkAsyncStakeIsDone, checkEnoughAllowanceRedirectToStakeStep, timeoutConfetti} from "./logic";
+
+import extProps from './propTypes';
+import { checkAsyncStakeIsDone, checkEnoughAllowanceRedirectToStakeStep, timeoutConfetti } from './logic';
 
 
-const DepositStepper = ({ classes, messages, maxAmount, onApprove, onStake, allowance, stake, approve, onDone }) => {
+const DepositStepper = ({
+  classes, messages, maxAmount, onApprove, onStake, allowance, stake, approve, onDone,
+}) => {
   const [step, setStep] = useState(0);
   const [amount, setAmount] = useState(0);
   const [isStaking, setIsStaking] = useState(false);
@@ -26,8 +30,8 @@ const DepositStepper = ({ classes, messages, maxAmount, onApprove, onStake, allo
   }, [step, isStaking, stake, setIsStaking, setIsDone, setStep]);
 
   useEffect(() => {
-      timeoutConfetti(isDone, onDone);
-    }, [isDone, onDone]);
+    timeoutConfetti(isDone, onDone);
+  }, [isDone, onDone]);
 
   return (
     <div className={classes.root}>
@@ -40,14 +44,16 @@ const DepositStepper = ({ classes, messages, maxAmount, onApprove, onStake, allo
               <div>
                 <Button
                   disabled
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <Button
                   variant="contained"
                   color="primary"
                   onClick={() => setStep(1)}
-                  className={classes.button}>
+                  className={classes.button}
+                >
                   {messages['I understand']}
                 </Button>
               </div>
@@ -76,7 +82,7 @@ const DepositStepper = ({ classes, messages, maxAmount, onApprove, onStake, allo
               aria-labelledby="discrete-slider-restrict"
               step={null}
               valueLabelDisplay="auto"
-              marks={[{value: 0, label: '0%'}, {value: 25, label: '25%'}, {value: 50, label: '50%'}, {value: 75, label: '75%'}, {value: 100, label: '100%'}]}
+              marks={[{ label: '0%', value: 0 }, { label: '25%', value: 25 }, { label: '50%', value: 50 }, { label: '75%', value: 75 }, { label: '100%', value: 100 }]}
               className={classes.sliderAmount}
               onChange={(_, value) => setAmount(maxAmount * (value / 100))}
             />
@@ -84,81 +90,93 @@ const DepositStepper = ({ classes, messages, maxAmount, onApprove, onStake, allo
               <div>
                 <Button
                   onClick={() => setStep(0)}
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <Button
                   disabled={!amount}
                   variant="contained"
                   color="primary"
                   onClick={() => setStep(2)}
-                  className={classes.button}>
-                  {messages['Next']}
+                  className={classes.button}
+                >
+                  {messages.Next}
                 </Button>
               </div>
             </div>
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>{messages['Approve']}</StepLabel>
+          <StepLabel>{messages.Approve}</StepLabel>
           <StepContent>
             <Typography>
               {messages['You need to allow the staking pool to take $LRC_AMOUNT from your wallet.'].split('$LRC_AMOUNT')[0]}
-              <span className={`font-weight-bold ${classes.spanAmount}`}>{numeral(amount).format('(0.00a)')} LRC</span>
+              <span className={`font-weight-bold ${classes.spanAmount}`}>
+                {numeral(amount).format('(0.00a)')}
+                {' '}
+                LRC
+              </span>
               {messages['You need to allow the staking pool to take $LRC_AMOUNT from your wallet.'].split('$LRC_AMOUNT')[1]}
             </Typography>
             <div className={classes.actionsContainer}>
               <div className={classes.divBackAndConfirm}>
                 <Button
                   onClick={() => setStep(1)}
-                  className={classes.button}>
-                  {messages['Back']}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <div className={classes.wrapper}>
                   <Button
                     disabled={approve.isLoading}
                     variant="contained"
                     color="primary"
-                    onClick={() => onApprove(new BigNumber(amount * (10**18)).toFixed(0))}
-                    className={ classes.button}>
-                    { approve.isLoading && messages['Approving'] }
-                    { !approve.isLoading && messages['Approve'] }
+                    onClick={() => onApprove(new BigNumber(amount * (10 ** 18)).toFixed(0))}
+                    className={classes.button}
+                  >
+                    { approve.isLoading && messages.Approving }
+                    { !approve.isLoading && messages.Approve }
                   </Button>
-                  { approve.isLoading && (<CircularProgress size={24} className={classes.buttonProgress} />)}
+                  { approve.isLoading
+                  && (<CircularProgress size={24} className={classes.buttonProgress} />)}
                 </div>
               </div>
             </div>
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>{messages['Stake']}</StepLabel>
+          <StepLabel>{messages.Stake}</StepLabel>
           <StepContent>
             <Typography>{messages['You can now deposit your LRC to the staking pool.']}</Typography>
             <div className={classes.actionsContainer}>
               <div className={classes.divBackAndConfirm}>
                 <Button
-                  onClick={() => setStep(allowance.value / (10**18) >= amount ? 1 : 2)}
-                  className={classes.button}>
-                  {messages['Back']}
+                  onClick={() => setStep(allowance.value / (10 ** 18) >= amount ? 1 : 2)}
+                  className={classes.button}
+                >
+                  {messages.Back}
                 </Button>
                 <div className={classes.wrapper}>
                   <Button
                     disabled={stake.isLoading}
                     variant="contained"
                     color="primary"
-                    onClick={() => onStake(new BigNumber(amount * (10**18)).toFixed(0))}
-                    className={ classes.button}>
-                    { stake.isLoading && messages['Staking'] }
-                    { !stake.isLoading && messages['Stake'] }
+                    onClick={() => onStake(new BigNumber(amount * (10 ** 18)).toFixed(0))}
+                    className={classes.button}
+                  >
+                    { stake.isLoading && messages.Staking }
+                    { !stake.isLoading && messages.Stake }
                   </Button>
-                  { stake.isLoading && (<CircularProgress size={24} className={classes.buttonProgress} />)}
+                  { stake.isLoading
+                  && (<CircularProgress size={24} className={classes.buttonProgress} />)}
                 </div>
               </div>
             </div>
           </StepContent>
         </Step>
         <Step>
-          <StepLabel>{messages['Done']}</StepLabel>
+          <StepLabel>{messages.Done}</StepLabel>
           <StepContent>
             <Typography color="primary" className="animated infinite heartBeat delay-1s">
               {messages['Your Loopring token are now staked and you will start collecting fees on all trades !']}

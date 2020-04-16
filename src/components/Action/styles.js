@@ -1,19 +1,19 @@
 export default (theme) => ({
-  root: {
-    width: '100%'
-  },
-  button: {
-    marginTop: theme.spacing(1),
-    marginRight: theme.spacing(1)
-  },
   actionsContainer: {
-    marginBottom: theme.spacing(2)
+    marginBottom: theme.spacing(2),
   },
   btnBack: {
-    position: 'absolute',
-    left: 8,
-    top: 2,
     border: 0,
-    fontSize: '1rem'
+    fontSize: '1rem',
+    left: 8,
+    position: 'absolute',
+    top: 2,
+  },
+  button: {
+    marginRight: theme.spacing(1),
+    marginTop: theme.spacing(1),
+  },
+  root: {
+    width: '100%',
   },
 });

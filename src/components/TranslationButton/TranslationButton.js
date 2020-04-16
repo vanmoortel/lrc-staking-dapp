@@ -20,8 +20,9 @@ const TranslationButton = React.memo(({
         onOpen={() => setIsOpen(true)}
         className={classes.buttonTranslate}
         direction="left"
-        open={isOpen}>
-        {languageList.map(language => (
+        open={isOpen}
+      >
+        {languageList.map((language) => (
           <SpeedDialAction
             className={classes.flagAction}
             disableHoverListener

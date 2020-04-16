@@ -10,10 +10,10 @@ import stakingEffect from './staking/effect';
 import feeEffect from './fee/effect';
 
 export const combinedReducer = {
-  settings: settingsReducer,
-  token: tokenReducer,
-  staking: stakingReducer,
   fee: feeReducer,
+  settings: settingsReducer,
+  staking: stakingReducer,
+  token: tokenReducer,
 };
 // eslint-disable-next-line func-names
 export const combinedEffect = function* () {
@@ -21,6 +21,6 @@ export const combinedEffect = function* () {
     fork(settingsEffect),
     fork(tokenEffect),
     fork(stakingEffect),
-    fork(feeEffect)
+    fork(feeEffect),
   ]);
 };

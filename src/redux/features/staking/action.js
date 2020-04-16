@@ -22,21 +22,21 @@ export const stakingGetStakeList = (contract, library) => ({
 });
 
 export const stakingGetYourStake = (contract, address) => ({
-  data: { contract, address },
+  data: { address, contract },
   type: STAKING_GET_YOUR_STAKE,
 });
 
 export const stakingDoStake = (contract, address, amount) => ({
-  data: { contract, address, amount },
+  data: { address, amount, contract },
   type: STAKING_DO_STAKE,
 });
 
-export const stakingDoClaim = (contract, address ) => ({
-  data: { contract, address },
+export const stakingDoClaim = (contract, address) => ({
+  data: { address, contract },
   type: STAKING_DO_CLAIM,
 });
 
-export const stakingDoWithdraw = (contract, address, amount ) => ({
-  data: { contract, address, amount },
+export const stakingDoWithdraw = (contract, address, amount) => ({
+  data: { address, amount, contract },
   type: STAKING_DO_WITHDRAW,
 });

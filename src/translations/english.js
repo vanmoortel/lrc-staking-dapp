@@ -1,3 +1,4 @@
+/* eslint-disable */
 // Key = english version (can be ... if too long)
 // and value = the english version (if not ... key=value)
 

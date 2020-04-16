@@ -1,20 +1,20 @@
 export default (theme) => ({
-  btnBlockies: {
-    '&:hover': {
-      transform: 'scale(1.1)'
-    },
-    cursor: 'pointer'
-  },
   accountAction: {
-    background: 'transparent'
+    background: 'transparent',
   },
   angleDownBlockies: {
+    bottom: -11,
+    color: theme.palette.primary.main,
     position: 'absolute',
     right: 4,
-    bottom: -11,
-    color: theme.palette.primary.main
+  },
+  btnBlockies: {
+    '&:hover': {
+      transform: 'scale(1.1)',
+    },
+    cursor: 'pointer',
   },
   iconLeft: {
-    marginRight: theme.spacing(1)
-  }
+    marginRight: theme.spacing(1),
+  },
 });
