@@ -4,6 +4,7 @@ import {
 import createSagaMiddleware from 'redux-saga';
 import { persistStore, persistReducer } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
+import autoMergeLevel1 from 'redux-persist/lib/stateReconciler/autoMergeLevel1';
 import { combinedReducer, combinedEffect } from '../features';
 
 const sagaMiddleware = createSagaMiddleware();
@@ -18,9 +19,10 @@ const composeEnhancers = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
 export default (initialState = {}) => {
   const createStoreWithMiddleware = composeEnhancers(applyMiddleware(...middleware))(createStore);
 
-  // Only persist settings(language)
+  // Only persist settings(language, walletId,...)
   const persistedReducer = persistReducer({
     key: 'root',
+    stateReconciler: autoMergeLevel1,
     storage,
     whitelist: ['settings'],
   }, combineReducers(combinedReducer));
