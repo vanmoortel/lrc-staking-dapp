@@ -26,8 +26,8 @@ const ActionButton = ({
       <div className="feature-box text-center">
         <img
           src={image}
-          className="mx-auto d-block img-fluid"
-          height={80}
+          className="mx-auto d-block"
+          height="80px"
           alt={title}
         />
         <h3 className="font-size-lg font-weight-bold my-3">{title}</h3>

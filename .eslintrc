@@ -1,7 +1,6 @@
 {
   "extends": [
-    "airbnb",
-    "plugin:testcafe/recommended"
+    "airbnb"
   ],
   "parser": "babel-eslint",
   "env":
@@ -12,7 +11,6 @@
     "jest": true
   },
   "plugins": [
-    "testcafe"
   ],
   "rules":
   {

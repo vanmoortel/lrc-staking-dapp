@@ -38,7 +38,7 @@ const BlockiesMenu = React.memo(({
         onClick={(e) => setAnchorEl(e.currentTarget)}
         onKeyDown={(e) => { if (e.key === 'Enter' && !!walletAddress) setAnchorEl(e.currentTarget); }}
       >
-        <BlockiesRound />
+        <BlockiesRound walletAddressBlockies={walletAddress} />
         <span className={classes.angleDownBlockies}>
           <FontAwesomeIcon icon={['fas', 'angle-down']} className="opacity-5" />
         </span>
@@ -62,7 +62,7 @@ const BlockiesMenu = React.memo(({
         <div className="dropdown-menu-right dropdown-menu-lg overflow-hidden p-0">
           <List className="text-left bg-transparent d-flex align-items-center flex-column pt-0">
             <div className="avatar-icon-wrapper rounded-circle mx-auto">
-              <BlockiesRound />
+              <BlockiesRound walletAddressBlockies={walletAddress} />
             </div>
             <ShortAddressCopyButton messages={messages} walletAddress={walletAddress} />
             <Divider className="w-100 mt-2" />

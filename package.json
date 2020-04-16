@@ -1,18 +1,15 @@
 {
   "name": "lrc-staking-dapp",
-  "version": "0.0.0",
+  "version": "1.0.0",
   "description": "Manage your stake of Loopring token(stakingpool.lrctoken.eth)",
   "scripts": {
     "start": "serve -s build",
     "start:dev": "react-scripts start",
-    "start:dev-stubs": "cross-env REACT_APP_STUB_ENABLED=true react-scripts start",
-    "start:production": "node server/index.js",
+    "start:production": "serve -s build",
     "build": "react-scripts build",
-    "test": "npm run test:eslint && npm run test:unit && npm run test:e2e",
+    "test": "npm run test:eslint",
     "test:eslint": "eslint src",
     "test:eslint-fix": "eslint src --fix",
-    "test:unit": "react-scripts test",
-    "test:e2e": "cross-env REACT_APP_TESTING_URL=localhost:3000 testcafe chrome e2e/*.js --skip-js-errors",
     "eject": "react-scripts eject",
     "heroku-postbuild": "npm run build"
   },
@@ -32,8 +29,6 @@
     ]
   },
   "dependencies": {
-    "express": "^4.17.1",
-    "path": "^0.12.7",
     "serve": "^11.3.0"
   },
   "devDependencies": {
@@ -61,14 +56,12 @@
     "apexcharts": "3.15.6",
     "bignumber.js": "^9.0.0",
     "clipboard-copy": "^3.1.0",
-    "cross-env": "^7.0.2",
     "eslint": "^6.8.0",
     "eslint-config-airbnb": "^18.1.0",
     "eslint-config-canonical": "^19.0.3",
     "eslint-plugin-import": "^2.20.2",
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
-    "eslint-plugin-testcafe": "^0.2.1",
     "framer-motion": "^1.10.3",
     "loglevel": "^1.6.7",
     "moment": "^2.24.0",
@@ -94,8 +87,6 @@
     "redux-saga": "^1.1.3",
     "sanitize.css": "^11.0.0",
     "sass-vars-to-js-loader": "^2.1.1",
-    "testcafe": "^1.8.3",
-    "testcafe-react-selectors": "^4.0.0",
     "validator": "^13.0.0",
     "web3": "^1.2.6"
   }
