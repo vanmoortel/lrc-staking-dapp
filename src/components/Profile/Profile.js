@@ -112,22 +112,22 @@ const Profile = React.memo(({
 
       <div className="divider my-4" />
       <Grid container spacing={4}>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <AmountSpan title={messages['Your Pending Reward']} number={pendingReward} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={12} sm={6}>
           <AmountSpan title={messages['Your Token Age']} number={tokenAge} isDay format="(0.0a)" isLoading={isChartLoading} loopringPrice={0} />
         </Grid>
       </Grid>
       <div className="divider my-4" />
       <Grid container spacing={4}>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <AmountSpan title={messages['Total Stake']} number={stakeTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <AmountSpan title={messages['Total Reward']} number={feesTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
         </Grid>
-        <Grid item xs={4}>
+        <Grid item xs={12} sm={4}>
           <AmountSpan title={messages['Your Share']} number={share} isPercent isLoading={isChartLoading} format="(0.000a)" loopringPrice={0} />
         </Grid>
       </Grid>

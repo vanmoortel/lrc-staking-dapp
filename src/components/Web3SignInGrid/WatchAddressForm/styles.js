@@ -1,5 +1,9 @@
 export default (theme) => ({
   btnConfirm: {
+    [theme.breakpoints.down('sm')]: {
+      marginLeft: 0,
+      width: '100%',
+    },
     display: 'block',
     flex: 3,
     height: 55,
@@ -15,6 +19,13 @@ export default (theme) => ({
     position: 'absolute',
     top: '50%',
   },
+  divForm: {
+    [theme.breakpoints.down('sm')]: {
+      flexDirection: 'column',
+    },
+    display: 'flex',
+    width: '100%',
+  },
   inputWallet: {
     flex: 10,
     height: 55,
@@ -22,6 +33,9 @@ export default (theme) => ({
     marginTop: 'auto',
   },
   wrapper: {
+    [theme.breakpoints.down('sm')]: {
+      width: '100%',
+    },
     position: 'relative',
     width: 'fit-content',
   },

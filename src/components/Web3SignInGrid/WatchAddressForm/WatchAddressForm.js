@@ -15,7 +15,7 @@ const WatchAddressForm = React.memo(({
   const [walletAddress, setWalletAddress] = useState(false);
 
   return (
-    <div style={{ display: 'flex', width: '100%' }}>
+    <div className={classes.divForm}>
       <TextField
         variant="outlined"
         label={messages['Wallet address or ENS']}

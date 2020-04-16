@@ -1,8 +1,11 @@
 export default (theme) => ({
   divTopRight: {
+    [theme.breakpoints.down('lg')]: {
+      right: theme.spacing(1.5),
+    },
     position: 'absolute',
     right: 0,
-    top: 24,
+    top: theme.spacing(3),
   },
   iconDollar: {
     color: theme.palette.primary.main,
