@@ -1,5 +1,5 @@
 export const checkEnoughAllowanceRedirectToStakeStep = (amount, allowance, step, onSetStep) => {
-  if (!!amount && allowance.value >= amount && step === 2) onSetStep(3);
+  if (!!amount && allowance.value / (10 ** 18) >= amount && step === 2) onSetStep(3);
 };
 
 export const checkAsyncStakeIsDone = (step, isStaking, stake,
