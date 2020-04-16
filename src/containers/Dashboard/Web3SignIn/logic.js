@@ -22,7 +22,7 @@ export const tryToOpenWalletIfNotActive = (active, walletID, onActivate, onSetWa
         onActivate(new LedgerConnector({ supportedChainIds: [1], url: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc' })).catch(() => onSetWalletID(0));
         break;
       case 4:
-        onActivate(new TrezorConnector({ supportedChainIds: [1], url: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc', manifestEmail: 'nolan@o2b.dev', manifestAppUrl: 'localhost:3000' })).catch(() => onSetWalletID(0));
+        onActivate(new TrezorConnector({ supportedChainIds: [1], url: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc', manifestEmail: 'nolan@o2b.dev', manifestAppUrl: 'https://stake.o2b.dev' })).catch(() => onSetWalletID(0));
         break;
       case 5:
         onActivate(new WalletConnectConnector({ rpc: { 1: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc' } })).catch(() => onSetWalletID(0));
