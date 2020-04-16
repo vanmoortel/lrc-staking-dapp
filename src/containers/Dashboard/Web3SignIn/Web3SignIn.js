@@ -9,6 +9,13 @@ import { Web3SignInGrid } from '../../../components';
 import { settingsLogout, settingsSetWalletAddress, settingsSetWalletID } from '../../../redux/features/settings/action';
 import { saveAddressWalletOrENS, tryToOpenWalletIfNotActive } from './logic';
 
+/*
+ *
+ * Sign in with web3 wallet or read only with RPC
+ * Save in localStorage the wallet used
+ *
+ */
+
 const Web3SignIn = () => {
   const {
     library, account, activate, active, error, deactivate,

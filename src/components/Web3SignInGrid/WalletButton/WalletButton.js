@@ -4,7 +4,13 @@ import { PulseLoader } from 'react-spinners';
 
 import extProps from './propTypes';
 
-const WalletButton = ({
+/*
+ *
+ * Button to try to sign in with web3 wallet
+ *
+ */
+
+const WalletButton = React.memo(({
   name, img, color, isFake, onClick, isLoading,
 }) => (
   <Button
@@ -26,7 +32,7 @@ const WalletButton = ({
       </h3>
     </div>
   </Button>
-);
+));
 
 WalletButton.propTypes = extProps;
 

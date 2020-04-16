@@ -3,7 +3,13 @@ import { Snackbar } from '@material-ui/core';
 import MuiAlert from '@material-ui/lab/Alert';
 import extProps from './propTypes';
 
-const SnackbarAlert = ({
+/*
+ *
+ * Snackbar to display title with message(eg: to display error)
+ *
+ */
+
+const SnackbarAlert = React.memo(({
   isOpen, children, severity, onClose,
 }) => (
   <Snackbar
@@ -20,7 +26,7 @@ const SnackbarAlert = ({
       </div>
     </MuiAlert>
   </Snackbar>
-);
+));
 
 SnackbarAlert.propTypes = extProps;
 

@@ -10,6 +10,13 @@ import { SuspenseLoading } from '../../../components';
 import ProfileContainer from './ProfileContainer';
 import Action from './ActionContainer';
 
+/*
+ *
+ * Display profile containing all basic information about stake user
+ * and action available with the staking pool
+ * Check if wallet is active and if all contract are loaded
+ *
+ */
 
 const ContractManager = () => {
   const language = useSelector((state) => state.settings.language);

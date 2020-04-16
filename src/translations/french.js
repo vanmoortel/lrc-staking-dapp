@@ -1,5 +1,5 @@
 /* eslint-disable */
-// Key = english version (can be ... if too long) and value = the french version
+// Key = english version and value = the french version
 
 export default {
   'Please wait while the application is loading': 'Veuillez patienter pendant le chargement de l\'application',

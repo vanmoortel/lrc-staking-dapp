@@ -7,6 +7,12 @@ import { Action } from '../../../../components';
 import { tokenDoApprove, tokenGetAllowance, tokenGetBalance } from '../../../../redux/features/token/action';
 import { stakingDoStake, stakingDoClaim, stakingDoWithdraw } from '../../../../redux/features/staking/action';
 
+/*
+ *
+ * Display all action to interact with staking pool
+ * Stake(deposit), claim, withdraw
+ *
+ */
 
 const ActionContainer = () => {
   const language = useSelector((state) => state.settings.language);
@@ -45,11 +51,13 @@ const ActionContainer = () => {
   ),
   [dispatch, walletAddress, stakingContract]);
 
+  // Fetch the allowance(how much can be transferred to staking pool) only one time
   useEffect(() => {
     if (!!tokenContract && walletAddress.value
       && !allowance.isLoading && !allowance.isLoaded) getAllowance();
   }, [tokenContract, walletAddress, allowance, getAllowance]);
 
+  // Fetch the amount of LRC in wallet only one time
   useEffect(() => {
     if (!!tokenContract && walletAddress.value
       && !balance.isLoading && !balance.isLoaded) getBalance();

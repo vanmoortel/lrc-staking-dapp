@@ -8,8 +8,13 @@ import numeral from 'numeral';
 import extProps from './propTypes';
 import { checkAsyncClaimIsDone, autoRedirect } from './logic';
 
+/*
+ *
+ * Claim step: 0: information, 1: claim, 2: done
+ *
+ */
 
-const ClaimStepper = ({
+const ClaimStepper = React.memo(({
   classes, messages, pendingReward, onClaim, onDone, claim,
 }) => {
   const [step, setStep] = useState(0);
@@ -100,7 +105,7 @@ const ClaimStepper = ({
       </Stepper>
     </div>
   );
-};
+});
 
 ClaimStepper.propTypes = extProps;
 

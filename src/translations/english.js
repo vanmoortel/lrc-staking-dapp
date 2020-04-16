@@ -1,6 +1,6 @@
 /* eslint-disable */
-// Key = english version (can be ... if too long)
-// and value = the english version (if not ... key=value)
+// Key = english version
+// and value = the english version (key=value)
 
 export default {
   'Please wait while the application is loading': 'Please wait while the application is loading',

@@ -56,7 +56,8 @@ library.add(
 
 /*
  *
- * Root of the app, initialize theme, reset css(CssBaseline) and initialize router for navigation
+ * Root of the app, initialize theme, reset css(CssBaseline),
+ * initialize router for navigation and WEB3 hooks
  *
  */
 const App = () => (

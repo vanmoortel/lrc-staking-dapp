@@ -6,6 +6,12 @@ import extProps, { AlertTwitterPropTypes } from './propTypes';
 import languageProvider from '../../../translations';
 import { SnackbarAlert } from '../../../components';
 
+/*
+ *
+ * Display error in snackbar for web3 hooks error, approve/stake/claim/withdraw request error
+ *
+ */
+
 const DisplayError = () => {
   const language = useSelector((state) => state.settings.language);
   const approve = useSelector((state) => state.token.approve);
@@ -48,7 +54,7 @@ const DisplayError = () => {
         {`${messages['If you have any issues please contact']} `}
         <a href="https://twitter.com/NolanVanmoortel" target="_blank" rel="noopener noreferrer">@NolanVanmoortel</a>
         (
-        {error}
+        {errorMsg}
         )
       </>
     </SnackbarAlert>

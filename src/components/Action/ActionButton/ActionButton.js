@@ -3,8 +3,14 @@ import { Tooltip, Button } from '@material-ui/core';
 import numeral from 'numeral';
 import extProps from './propTypes';
 
+/*
+ *
+ * Display a button to open step of a particular action with smart contract
+ * can be isLocked if watch-only and waitingTime should be 0
+ *
+ */
 
-const ActionButton = ({
+const ActionButton = React.memo(({
   messages, image, title, description, onClick, isLocked, waitingTime,
 }) => {
   const ActionContent = () => (
@@ -53,7 +59,7 @@ const ActionButton = ({
     );
   }
   return (<ActionContent />);
-};
+});
 
 ActionButton.propTypes = extProps;
 

@@ -16,6 +16,12 @@ import torusLogo from '../../assets/images/wallet/torus.png';
 import WalletButton from './WalletButton';
 import WatchAddressForm from './WatchAddressForm';
 
+/*
+ *
+ * Display sign in with web3 wallet or read only with RPC
+ *
+ */
+
 const Web3SignInGrid = React.memo(({
   classes, messages, onSelectWallet, walletLoading, onUpdateWalletAddress, isLoading,
 }) => {
@@ -135,6 +141,9 @@ const Web3SignInGrid = React.memo(({
                         <WalletButton img={torusLogo} color="#5396F7" name="Torus" isLoading={walletLoading === 10} onClick={() => onSelectWallet(walletLoading === 10 ? 0 : 10)} />
                       </Grid>
                       <Grid item xs={12} sm={6} md={4}>
+                        {
+                          // Hacky solution to have same grid alignment
+                        }
                         <WalletButton img={torusLogo} color="#5396F7" name="Torus" isFake isLoading={false} onClick={() => {}} />
                       </Grid>
                     </Grid>

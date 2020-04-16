@@ -10,6 +10,13 @@ import ShortAddressCopyButton from '../../ShortAddressCopyButton';
 import extProps from './propTypes';
 import lrc from '../../../assets/images/loopring/loopring-small-black.png';
 
+/*
+ *
+ * Visual representation of your wallet and tools to copy your address
+ * can be open to have access to externals links and logout
+ *
+ */
+
 const BlockiesMenu = React.memo(({
   classes, messages, walletAddress, onEditAddress, onLogout,
 }) => {

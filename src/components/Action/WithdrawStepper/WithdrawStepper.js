@@ -9,8 +9,13 @@ import BigNumber from 'bignumber.js';
 import extProps from './propTypes';
 import { checkAsyncWithdrawIsDone, timeoutRedirect } from './logic';
 
+/*
+ *
+ * Withdraw step: 0: information, 1: enter amount, 2: withdraw, 3: done
+ *
+ */
 
-const WithdrawStepper = ({
+const WithdrawStepper = React.memo(({
   classes, messages, maxAmount, onWithdraw, withdraw, onDone,
 }) => {
   const [step, setStep] = useState(0);
@@ -148,7 +153,7 @@ const WithdrawStepper = ({
       </Stepper>
     </div>
   );
-};
+});
 
 WithdrawStepper.propTypes = extProps;
 

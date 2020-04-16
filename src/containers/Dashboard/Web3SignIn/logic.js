@@ -9,14 +9,15 @@ import { SquarelinkConnector } from '@web3-react/squarelink-connector';
 import { TorusConnector } from '@web3-react/torus-connector';
 import { NetworkConnector } from '@web3-react/network-connector';
 
+// Activate wallet if not web3 hook not already active
 export const tryToOpenWalletIfNotActive = (active, walletID, onActivate, onSetWalletID) => {
   if (!active) {
     switch (walletID) {
-      case 1:
+      case 1: // Read-only
         onActivate(new NetworkConnector({ urls: { 1: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc' } }))
           .catch(() => onSetWalletID(0));
         break;
-      case 2:
+      case 2: // Metamask
         onActivate(new InjectedConnector({ supportedChainIds: [1, 3, 4, 5, 42] }))
           .catch(() => onSetWalletID(0));
         break;
@@ -57,13 +58,14 @@ export const tryToOpenWalletIfNotActive = (active, walletID, onActivate, onSetWa
         onActivate(new TorusConnector({ chainId: 1 }))
           .catch(() => onSetWalletID(0));
         break;
-      default:
+      default: // No wallet
         onSetWalletID(0);
         break;
     }
   }
 };
 
+// Set and save wallet address, if read-only resolve ENS
 export const saveAddressWalletOrENS = (library, walletAddress, addressWatchOnly,
   account, onSetWalletAddress) => {
   if (!!library && !walletAddress.isLoading) {

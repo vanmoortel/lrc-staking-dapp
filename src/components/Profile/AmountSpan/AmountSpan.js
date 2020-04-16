@@ -5,6 +5,12 @@ import Skeleton from '@material-ui/lab/Skeleton';
 import extProps from './propTypes';
 import lrc from '../../../assets/images/loopring/loopring-small-blue.png';
 
+/*
+ *
+ * Display amount with skeleton when loading
+ *
+ */
+
 const AmountSpan = React.memo(({
   classes, title, number, format = '(0.00a)',
   isShowLoopring, isXl, isPercent, isDay, isLoading,

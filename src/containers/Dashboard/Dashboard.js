@@ -14,6 +14,13 @@ import { feeSetContract } from '../../redux/features/fee/action';
 import { tokenSetContract } from '../../redux/features/token/action';
 import DisplayError from './DisplayError';
 
+/*
+ *
+ * Main container of the APP
+ * containing Translation feature, Display Errors and the rest of the APP
+ *
+ */
+
 const Dashboard = ({ classes, children }) => {
   const { library } = useWeb3React();
   const stakingContract = useSelector((state) => state.staking.contract);

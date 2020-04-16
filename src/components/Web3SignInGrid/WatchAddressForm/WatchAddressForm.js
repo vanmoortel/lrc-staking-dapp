@@ -3,6 +3,12 @@ import { TextField, Button, CircularProgress } from '@material-ui/core';
 
 import extProps from './propTypes';
 
+/*
+ *
+ * Form to set watch-only wallet (can be ENS)
+ *
+ */
+
 const WatchAddressForm = React.memo(({
   classes, messages, onConfirm, isLoading,
 }) => {

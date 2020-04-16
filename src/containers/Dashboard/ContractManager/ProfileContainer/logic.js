@@ -1,15 +1,19 @@
 import Moment from 'moment';
 import BigNumber from 'bignumber.js';
 
+// Fetch the total amount stake in staking pool only if not already done
 export const oneTimeFetchTotalStake = (stakingContract, totalStake, onGetTotalStake) => {
   if (!!stakingContract && !totalStake.isLoaded && !totalStake.isLoading) onGetTotalStake();
 };
 
+// Fetch all user stake in staking pool only if not already done
+// will be used to compute chart of token age distribution and your share of reward
 export const oneTimeFetchAllStake = (stakingContract, library, stakeList, onGetStakeList) => {
   if (!!stakingContract && !!library
     && !stakeList.isLoaded && !stakeList.isLoading) onGetStakeList();
 };
 
+// Compute token age distribution
 export const oneTimeComputeTokenAgeDistribution = (stakeList, tokenAgeList, onSetTokenAgeList) => {
   if (!stakeList.isLoaded || !!tokenAgeList) return;
   const tokenAgeMap = new Map();
@@ -37,11 +41,13 @@ export const oneTimeComputeTokenAgeDistribution = (stakeList, tokenAgeList, onSe
   onSetTokenAgeList(updatedTokenAgeList);
 };
 
+// Fetch your own stake every time you sign in
 export const fetchYourStake = (stakingContract, yourStake, walletAddress, onGetYourStake) => {
   if (!!stakingContract && !yourStake.isLoaded
     && !yourStake.isLoading && !!walletAddress.value) onGetYourStake();
 };
 
+// Compute your share of reward and your token age based on your stake and the stake of everyone
 export const computeYourShareAndYourTokenAge = (stakeList, yourStake, yourShare, yourTokenAge,
   onSetYourShare, onSetYourTokenAge) => {
   if (!stakeList.isLoaded || !yourStake.isLoaded) return;
@@ -61,6 +67,7 @@ export const computeYourShareAndYourTokenAge = (stakeList, yourStake, yourShare,
   onSetYourTokenAge(!yourPoint ? 0 : updatedYourTokenAge);
 };
 
+// Fetch the total reward in fees pool only if not already done
 export const oneTimeFetchTotalReward = (feeContract, feeStats, onGetFeeStats) => {
   if (!!feeContract && !feeStats.isLoaded && !feeStats.isLoading) onGetFeeStats();
 };

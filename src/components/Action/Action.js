@@ -11,8 +11,15 @@ import DepositStepper from './DepositStepper';
 import ClaimStepper from './ClaimStepper';
 import WithdrawStepper from './WithdrawStepper';
 
+/*
+ *
+ * Display all interaction with smart contract
+ * stake(deposit), claim, withdraw
+ * Action can be locked if watch-only or if stake younger than 90 days
+ *
+ */
 
-const Action = ({
+const Action = React.memo(({
   classes, messages, onApprove, onStake, onClaim, onWithdraw,
   allowance, stake, claim, withdraw, balance, approve, isLocked,
   pendingReward, yourStake, withdrawTime, claimTime,
@@ -119,7 +126,7 @@ const Action = ({
       </Grid>
     </Grid>
   );
-};
+});
 
 Action.propTypes = extProps;
 

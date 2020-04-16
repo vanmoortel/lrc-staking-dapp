@@ -11,8 +11,14 @@ import Confetti from 'react-confetti';
 import extProps from './propTypes';
 import { checkAsyncStakeIsDone, checkEnoughAllowanceRedirectToStakeStep, timeoutConfetti } from './logic';
 
+/*
+ *
+ * Stake(Deposit) step: 0: information, 1: enter amount, 2: approve(skip if already approved),
+ * 3: stake, 4: done with confetti
+ *
+ */
 
-const DepositStepper = ({
+const DepositStepper = React.memo(({
   classes, messages, maxAmount, onApprove, onStake, allowance, stake, approve, onDone,
 }) => {
   const [step, setStep] = useState(0);
@@ -151,6 +157,10 @@ const DepositStepper = ({
             <Typography>{messages['You can now deposit your LRC to the staking pool.']}</Typography>
             <div className={classes.actionsContainer}>
               <div className={classes.divBackAndConfirm}>
+                {
+                  // Redirect to step approve if not enough approved
+                  // if not redirect to step enter amount
+                }
                 <Button
                   onClick={() => setStep(allowance.value / (10 ** 18) >= amount ? 1 : 2)}
                   className={classes.button}
@@ -192,7 +202,7 @@ const DepositStepper = ({
       </Stepper>
     </div>
   );
-};
+});
 
 DepositStepper.propTypes = extProps;
 

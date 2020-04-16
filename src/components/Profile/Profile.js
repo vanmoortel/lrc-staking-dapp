@@ -8,6 +8,7 @@ import ShortAddressCopyButton from '../ShortAddressCopyButton';
 import StakeProfileMenu from './BlockiesMenu';
 import AmountSpan from './AmountSpan';
 
+// Option for token age distribution chart
 const defaultOption = {
   chart: {
     sparkline: {
@@ -66,6 +67,12 @@ const defaultData = [
   },
 ];
 
+/*
+ *
+ * Display profile with all information about your stake
+ *
+ */
+
 const Profile = React.memo(({
   classes, messages, walletAddress, stake, pendingReward, tokenAge,
   stakeTotal, feesTotal, share, tokenAgeList, onEditAddress, onLogout, isLoading, isChartLoading,
@@ -73,6 +80,7 @@ const Profile = React.memo(({
   const [chartData, setChartData] = useState(defaultData);
   const [chartOption, setChartOption] = useState(defaultOption);
 
+  // Setup chart data with cumulative token by age
   useEffect(() => {
     if (!!tokenAgeList && !!tokenAgeList.length && !chartData[0].data.length) {
       setChartOption({

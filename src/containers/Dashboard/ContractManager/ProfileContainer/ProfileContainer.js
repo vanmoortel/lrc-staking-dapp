@@ -20,6 +20,12 @@ import {
 } from '../../../../redux/features/staking/action';
 import { feeGetFeeStats } from '../../../../redux/features/fee/action';
 
+/*
+ *
+ * Display all the information about user stack
+ *
+ */
+
 const ProfileContainer = () => {
   const { library, deactivate } = useWeb3React();
   const language = useSelector((state) => state.settings.language);

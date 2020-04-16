@@ -6,6 +6,12 @@ import SpeedDialAction from '@material-ui/lab/SpeedDialAction';
 import { Translate } from '@material-ui/icons';
 import extProps from './propTypes';
 
+/*
+ *
+ * Button to switch language of the application dynamically
+ *
+ */
+
 const TranslationButton = React.memo(({
   classes, languageList, onSetLanguage,
 }) => {
