@@ -19,6 +19,7 @@ import {
   faChartPie,
   faGlobe,
   faDonate,
+  faDollarSign,
 } from '@fortawesome/free-solid-svg-icons';
 import { far, faQuestionCircle } from '@fortawesome/free-regular-svg-icons';
 import {
@@ -52,6 +53,7 @@ library.add(
   faChartPie,
   faGlobe,
   faDonate,
+  faDollarSign,
 );
 
 /*

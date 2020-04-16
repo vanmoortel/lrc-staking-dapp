@@ -5,7 +5,7 @@ import { useWeb3React } from '@web3-react/core';
 import extProps from './propTypes';
 import languageProvider from '../../../../translations';
 import { Profile } from '../../../../components';
-import { settingsLogout } from '../../../../redux/features/settings/action';
+import { settingsLogout, settingsShowDollar } from '../../../../redux/features/settings/action';
 import {
   computeYourShareAndYourTokenAge,
   fetchYourStake,
@@ -35,6 +35,7 @@ const ProfileContainer = () => {
   const stakeList = useSelector((state) => state.staking.stakeList);
   const yourStake = useSelector((state) => state.staking.yourStake);
   const feeStats = useSelector((state) => state.fee.feeStats);
+  const isShowDollar = useSelector((state) => state.settings.isShowDollar);
   const walletAddress = useSelector((state) => state.settings.walletAddress);
   const dispatch = useDispatch();
   const getTotalStake = useCallback(() => dispatch(
@@ -54,6 +55,9 @@ const ProfileContainer = () => {
   const logout = useCallback((_walletID) => dispatch(
     settingsLogout(deactivate, _walletID),
   ), [dispatch, deactivate]);
+  const setIsShowPrice = useCallback((_isShowPrice) => dispatch(
+    settingsShowDollar(_isShowPrice),
+  ), [dispatch]);
   const [tokenAgeList, setTokenAgeList] = useState(null);
   const [yourShare, setYourShare] = useState(null);
   const [yourTokenAge, setYourTokenAge] = useState(null);
@@ -100,6 +104,9 @@ const ProfileContainer = () => {
       onLogout={() => logout(0)}
       isLoading={!feeStats.isLoaded || !totalStake.isLoaded || !yourStake.isLoaded}
       isChartLoading={!stakeList.isLoaded}
+      isShowDollar={(isShowDollar || { value: false }).value}
+      loopringPrice={(isShowDollar || { price: 0 }).price}
+      onSetIsShowDollar={setIsShowPrice}
     />
   );
 };

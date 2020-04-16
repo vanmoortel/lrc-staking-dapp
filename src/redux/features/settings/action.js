@@ -2,6 +2,7 @@ export const SETTINGS_SET_LANGUAGE = 'SETTINGS_SET_LANGUAGE';
 export const SETTINGS_SET_WALLET_ID = 'SETTINGS_SET_WALLET_ID';
 export const SETTINGS_SET_WALLET_ADDRESS = 'SETTINGS_SET_WALLET_ADDRESS';
 export const SETTINGS_LOGOUT = 'SETTINGS_LOGOUT';
+export const SETTINGS_SHOW_DOLLAR = 'SETTINGS_SHOW_DOLLAR';
 
 export const settingsSetLanguage = (language) => ({
   data: { language },
@@ -21,4 +22,9 @@ export const settingsSetWalletAddress = (library, walletAddress) => ({
 export const settingsLogout = (deactivate, walletID) => ({
   data: { deactivate, walletID },
   type: SETTINGS_LOGOUT,
+});
+
+export const settingsShowDollar = (isShowDollar) => ({
+  data: { isShowDollar },
+  type: SETTINGS_SHOW_DOLLAR,
 });

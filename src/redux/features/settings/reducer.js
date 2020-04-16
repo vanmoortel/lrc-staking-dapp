@@ -2,11 +2,17 @@ import LANGUAGES from '../../../constants/language';
 import {
   SETTINGS_SET_LANGUAGE,
   SETTINGS_SET_WALLET_ID,
-  SETTINGS_SET_WALLET_ADDRESS, SETTINGS_LOGOUT,
+  SETTINGS_SET_WALLET_ADDRESS, SETTINGS_LOGOUT, SETTINGS_SHOW_DOLLAR,
 } from './action';
 import { onError, onSuccess } from '../../../utils/createAsyncAction';
 
 const initialState = {
+  isShowDollar: {
+    error: null,
+    isLoading: false,
+    price: 0,
+    value: false,
+  },
   language: LANGUAGES.english,
   logout: {
     error: null,
@@ -102,6 +108,38 @@ const reducer = (state = initialState, action) => {
           value: '',
         },
         walletID: 0,
+      };
+    case SETTINGS_SHOW_DOLLAR:
+      return {
+        ...state,
+        isShowDollar: {
+          ...state.isShowDollar,
+          error: null,
+          isLoading: true,
+          price: 0,
+          value: action.data.isShowDollar,
+        },
+      };
+    case onSuccess(SETTINGS_SHOW_DOLLAR):
+      return {
+        ...state,
+        isShowDollar: {
+          ...state.isShowDollar,
+          error: null,
+          isLoading: false,
+          price: action.data,
+        },
+      };
+    case onError(SETTINGS_SHOW_DOLLAR):
+      return {
+        ...state,
+        isShowDollar: {
+          ...state.isShowDollar,
+          error: action.data,
+          isLoading: false,
+          price: 0,
+          value: false,
+        },
       };
     default:
       return state;

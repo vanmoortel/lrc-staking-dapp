@@ -7,6 +7,7 @@ import extProps from './propTypes';
 import ShortAddressCopyButton from '../ShortAddressCopyButton';
 import StakeProfileMenu from './BlockiesMenu';
 import AmountSpan from './AmountSpan';
+import SwitchShowDollar from './SwitchShowDollar';
 
 // Option for token age distribution chart
 const defaultOption = {
@@ -75,7 +76,8 @@ const defaultData = [
 
 const Profile = React.memo(({
   classes, messages, walletAddress, stake, pendingReward, tokenAge,
-  stakeTotal, feesTotal, share, tokenAgeList, onEditAddress, onLogout, isLoading, isChartLoading,
+  isShowDollar, onSetIsShowDollar, stakeTotal, feesTotal, share, tokenAgeList,
+  onEditAddress, onLogout, isLoading, isChartLoading, loopringPrice,
 }) => {
   const [chartData, setChartData] = useState(defaultData);
   const [chartOption, setChartOption] = useState(defaultOption);
@@ -102,30 +104,31 @@ const Profile = React.memo(({
         onLogout={onLogout}
         onEditAddress={onEditAddress}
       />
+      <SwitchShowDollar onSwitch={onSetIsShowDollar} isShowDollar={isShowDollar} />
       <ShortAddressCopyButton messages={messages} walletAddress={walletAddress} />
       <div className={classes.divYourStake}>
-        <AmountSpan title={messages['Your Stake']} number={stake} messages={messages} isShowLoopring isXl isLoading={isLoading} />
+        <AmountSpan title={messages['Your Stake']} number={stake} messages={messages} isShowLoopring isXl isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
       </div>
 
       <div className="divider my-4" />
       <Grid container spacing={4}>
         <Grid item xs={6}>
-          <AmountSpan title={messages['Your Pending Reward']} number={pendingReward} isShowLoopring isLoading={isLoading} />
+          <AmountSpan title={messages['Your Pending Reward']} number={pendingReward} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
         </Grid>
         <Grid item xs={6}>
-          <AmountSpan title={messages['Your Token Age']} number={tokenAge} isDay format="(0.0a)" isLoading={isChartLoading} />
+          <AmountSpan title={messages['Your Token Age']} number={tokenAge} isDay format="(0.0a)" isLoading={isChartLoading} loopringPrice={0} />
         </Grid>
       </Grid>
       <div className="divider my-4" />
       <Grid container spacing={4}>
         <Grid item xs={4}>
-          <AmountSpan title={messages['Total Stake']} number={stakeTotal} isShowLoopring isLoading={isLoading} />
+          <AmountSpan title={messages['Total Stake']} number={stakeTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
         </Grid>
         <Grid item xs={4}>
-          <AmountSpan title={messages['Total Reward']} number={feesTotal} isShowLoopring isLoading={isLoading} />
+          <AmountSpan title={messages['Total Reward']} number={feesTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
         </Grid>
         <Grid item xs={4}>
-          <AmountSpan title={messages['Your Share']} number={share} isPercent isLoading={isChartLoading} format="(0.000a)" />
+          <AmountSpan title={messages['Your Share']} number={share} isPercent isLoading={isChartLoading} format="(0.000a)" loopringPrice={0} />
         </Grid>
       </Grid>
       <div className="divider my-4" />

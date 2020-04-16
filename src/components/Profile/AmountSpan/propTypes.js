@@ -8,6 +8,7 @@ const propTypes = {
   isPercent: PropTypes.bool,
   isShowLoopring: PropTypes.bool,
   isXl: PropTypes.bool,
+  loopringPrice: PropTypes.number.isRequired,
   number: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
 };
