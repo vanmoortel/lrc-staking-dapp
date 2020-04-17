@@ -50,9 +50,9 @@ const Dashboard = ({ classes, children }) => {
           />
         </div>
         <div className="app-content p-0">
-          <div className="app-content--inner d-flex align-items-center">
+          <div className={`app-content--inner d-flex align-items-center ${classes.noPaddingMobile}`}>
             <div className="flex-grow-1 w-100 d-flex align-items-center">
-              <div className="bg-composed-wrapper--content py-5">
+              <div className={`bg-composed-wrapper--content py-5 ${classes.noPaddingMobile}`}>
                 <Container maxWidth="lg">
                   { children }
                 </Container>
