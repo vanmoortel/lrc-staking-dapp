@@ -18,12 +18,14 @@ const DisplayError = () => {
   const stake = useSelector((state) => state.staking.stake);
   const claim = useSelector((state) => state.staking.claim);
   const withdraw = useSelector((state) => state.staking.withdraw);
+  const walletAddress = useSelector((state) => state.settings.walletAddress);
   const { error } = useWeb3React();
   const [web3Error, setWeb3Error] = useState('');
   const [approveError, setApproveError] = useState('');
   const [stakeError, setStakeError] = useState('');
   const [claimError, setClaimError] = useState('');
   const [withdrawError, setWithdrawError] = useState('');
+  const [walletAddressError, setWalletAddressError] = useState('');
 
   const messages = languageProvider[language];
 
@@ -47,6 +49,10 @@ const DisplayError = () => {
     if (withdraw.error) setWithdrawError(withdraw.error.message || 'None');
   }, [withdraw, setWithdrawError]);
 
+  useEffect(() => {
+    if (walletAddress.error) setWalletAddressError(walletAddress.error.message || 'None');
+  }, [walletAddress, setWalletAddressError]);
+
   const AlertTwitter = ({ onSetError, errorMsg, title }) => (
     <SnackbarAlert onClose={() => onSetError('')} isOpen={!!errorMsg} severity="error">
       <>
@@ -68,6 +74,7 @@ const DisplayError = () => {
       <AlertTwitter title={messages['Failed to stake']} errorMsg={stakeError} onSetError={setStakeError} />
       <AlertTwitter title={messages['Failed to claim']} errorMsg={claimError} onSetError={setClaimError} />
       <AlertTwitter title={messages['Failed to withdraw']} errorMsg={withdrawError} onSetError={setWithdrawError} />
+      <AlertTwitter title={messages['Failed to open your wallet']} errorMsg={walletAddressError} onSetError={setWalletAddressError} />
     </>
   );
 };

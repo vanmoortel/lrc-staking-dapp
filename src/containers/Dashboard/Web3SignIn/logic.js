@@ -66,11 +66,8 @@ export const tryToOpenWalletIfNotActive = (active, walletID, onActivate, onSetWa
 };
 
 // Set and save wallet address, if read-only resolve ENS
-export const saveAddressWalletOrENS = (library, walletAddress, addressWatchOnly,
+export const saveAddressWalletOrENS = (library, walletAddress,
   account, onSetWalletAddress) => {
-  if (!!library && !walletAddress.isLoading) {
-    if (!!addressWatchOnly
-      && walletAddress.value !== addressWatchOnly) onSetWalletAddress(addressWatchOnly);
-    if (!!account && walletAddress.value !== account) onSetWalletAddress(account);
-  }
+  if (!!library && !walletAddress.isLoading
+    && !!account && walletAddress.value !== account) onSetWalletAddress(account);
 };

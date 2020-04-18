@@ -12,9 +12,9 @@ const fetchENS = function* (action) {
     if (!action.data.walletAddress.startsWith('0x')) {
       const walletAddress = yield action.data.library.eth.ens.getAddress(action.data.walletAddress);
       yield put({ data: `${walletAddress}`, type: onSuccess(action.type) });
-    } else {
-      yield put({ data: action.data.walletAddress, type: onSuccess(action.type) });
-    }
+      // eslint-disable-next-line no-throw-literal
+    } else if (action.data.walletAddress.length !== 42) throw { message: 'Wrong address' };
+    else yield put({ data: action.data.walletAddress, type: onSuccess(action.type) });
   } catch (error) {
     yield put({ data: error, type: onError(action.type) });
   }
