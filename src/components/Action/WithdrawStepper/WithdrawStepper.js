@@ -67,7 +67,7 @@ const WithdrawStepper = React.memo(({
               variant="outlined"
               label="Amount"
               fullWidth
-              type="text"
+              type="number"
               placeholder={maxAmount}
               className={classes.inputLRC}
               onChange={(e) => setAmount(e.target.value <= maxAmount ? e.target.value : maxAmount)}
@@ -93,7 +93,7 @@ const WithdrawStepper = React.memo(({
                   {messages.Back}
                 </Button>
                 <Button
-                  disabled={!amount}
+                  disabled={!(amount * 1)}
                   variant="contained"
                   color="primary"
                   onClick={() => setStep(2)}
