@@ -22,7 +22,7 @@ export const tryToOpenWalletIfNotActive = (active, walletID, onActivate, onSetWa
           .catch(() => onSetWalletID(0));
         break;
       case 3:
-        onActivate(new LedgerConnector({ supportedChainIds: [1], url: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc' }))
+        onActivate(new LedgerConnector({ chainId: 1, url: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc' }))
           .catch(() => onSetWalletID(0));
         break;
       case 4:
