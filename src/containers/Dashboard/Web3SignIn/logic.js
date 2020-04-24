@@ -27,9 +27,9 @@ export const tryToOpenWalletIfNotActive = (active, walletID, onActivate, onSetWa
         break;
       case 4:
         onActivate(new TrezorConnector({
+          chainId: 1,
           manifestAppUrl: 'https://stake.o2b.dev',
           manifestEmail: 'nolan@o2b.dev',
-          supportedChainIds: [1],
           url: 'https://mainnet.infura.io/v3/740f8a307aa34141a298506577f063bc',
         }))
           .catch(() => onSetWalletID(0));
