@@ -44,8 +44,11 @@ const Dashboard = ({ classes, children }) => {
       <div className="app-main flex-column">
         <div className={classes.btnTranslate}>
           <TranslationButton
-            languageList={[{ flag: (<FlagIcon code="US" size={45} />), name: LANGUAGES.english },
-              { flag: (<FlagIcon code="FR" size={45} />), name: LANGUAGES.french }]}
+            languageList={[
+              { flag: (<FlagIcon code="US" size={45} />), name: LANGUAGES.english },
+              { flag: (<FlagIcon code="CN" size={45} />), name: LANGUAGES.chinese },
+              { flag: (<FlagIcon code="FR" size={45} />), name: LANGUAGES.french }
+              ]}
             onSetLanguage={setLanguage}
           />
         </div>

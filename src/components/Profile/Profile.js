@@ -19,12 +19,12 @@ const defaultOption = {
       show: false,
     },
   },
-  colors: ['#5383ff'],
+  colors: ['#1c42ff'],
   dataLabels: {
     enabled: false,
   },
   fill: {
-    color: '#5383ff',
+    color: '#1c42ff',
     gradient: {
       inverseColors: false,
       opacityFrom: 1,
