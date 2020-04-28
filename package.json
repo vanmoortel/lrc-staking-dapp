@@ -68,6 +68,7 @@
     "eslint-plugin-react": "^7.19.0",
     "framer-motion": "^1.10.3",
     "gh-pages": "^2.2.0",
+    "husky": "^4.2.5",
     "loglevel": "^1.6.7",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
