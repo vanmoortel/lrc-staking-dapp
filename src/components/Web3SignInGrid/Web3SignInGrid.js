@@ -30,12 +30,12 @@ const Web3SignInGrid = React.memo(({
   return (
     <Grid container spacing={0}>
       <Grid item xs={12} lg={5}>
-        <div className="hero-wrapper bg-composed-wrapper bg-plum-plate h-100 rounded-left" style={{ minHeight: 504 }}>
+        <div className="hero-wrapper h-100 rounded-left" style={{ minHeight: 504 }}>
           <div className="flex-grow-1 w-100 h-100 d-flex align-items-center">
             <div
-              className={`bg-composed-wrapper--image rounded-left ${classes.backgroundHero}`}
+              className={` rounded-left ${classes.backgroundHero}`}
             />
-            <div className="bg-composed-wrapper--bg bg-second opacity-5 rounded-left" />
+            <div className="bg-composed-wrapper--bg opacity-5 rounded-left" />
             <div className="bg-composed-wrapper--content p-5">
               <div className="d-flex align-items-center">
                 <span className="px-4 h-auto py-1 badge badge-second badge-pill">

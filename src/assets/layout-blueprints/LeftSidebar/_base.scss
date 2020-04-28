@@ -23,6 +23,7 @@ body {
 .app-main {
   position: relative;
   min-height: 100vh;
+    background-color: #f5f6f7;
 }
 
 .app-content {
@@ -32,6 +33,7 @@ body {
   flex-direction: column;
   transition: all 0.5s $app-sidebar-transition;
   padding-top: $header-height;
+
 
   &--inner {
     padding: $layout-spacer $layout-spacer ($layout-spacer / 2);
