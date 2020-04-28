@@ -1,6 +1,7 @@
 {
   "name": "lrc-staking-dapp",
   "version": "1.0.0",
+  "homepage": "http://loopring.github.io/lrc-staking-dapp",
   "description": "Manage your stake of Loopring token(stakingpool.lrctoken.eth)",
   "scripts": {
     "start": "serve -s build",
@@ -11,7 +12,9 @@
     "test:eslint": "eslint src",
     "test:eslint-fix": "eslint src --fix",
     "eject": "react-scripts eject",
-    "heroku-postbuild": "npm run build"
+    "heroku-postbuild": "npm run build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -64,6 +67,7 @@
     "eslint-plugin-jsx-a11y": "^6.2.3",
     "eslint-plugin-react": "^7.19.0",
     "framer-motion": "^1.10.3",
+    "gh-pages": "^2.2.0",
     "loglevel": "^1.6.7",
     "moment": "^2.24.0",
     "node-sass": "^4.13.1",
