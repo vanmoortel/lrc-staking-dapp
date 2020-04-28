@@ -10,6 +10,7 @@ export default (theme) => ({
     left: 8,
     position: 'absolute',
     top: 2,
+    zIndex: 6,
   },
   btnSwitchNext: {
     border: 0,
