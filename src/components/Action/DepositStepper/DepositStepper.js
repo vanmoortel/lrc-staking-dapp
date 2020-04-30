@@ -10,6 +10,7 @@ import Confetti from 'react-confetti';
 
 import extProps from './propTypes';
 import { checkAsyncStakeIsDone, checkEnoughAllowanceRedirectToStakeStep, timeoutConfetti } from './logic';
+import BigAmountHelper from '../../../utils/BigAmountHelper';
 
 /*
  *
@@ -78,7 +79,8 @@ const DepositStepper = React.memo(({
               type="number"
               placeholder={maxAmount}
               className={classes.inputLRC}
-              onChange={(e) => setAmount(e.target.value <= maxAmount ? e.target.value : maxAmount)}
+              onChange={(e) => setAmount(e.target.value <= maxAmount
+                ? e.target.value * 1 : maxAmount * 1)}
             />
             <Slider
               value={!maxAmount ? 0 : Math.round((amount / maxAmount) * 100)}
@@ -138,7 +140,7 @@ const DepositStepper = React.memo(({
                     disabled={approve.isLoading}
                     variant="contained"
                     color="primary"
-                    onClick={() => onApprove(new BigNumber(amount * (10 ** 18)).toFixed(0))}
+                    onClick={() => onApprove(BigAmountHelper(amount).toFixed(0))}
                     className={classes.button}
                   >
                     { approve.isLoading && messages.Approving }
@@ -163,7 +165,7 @@ const DepositStepper = React.memo(({
                 }
                 <Button
                   onClick={() => setStep(new BigNumber(allowance.value)
-                    .isGreaterThanOrEqualTo(new BigNumber(amount * (10 ** 18))) ? 1 : 2)}
+                    .isGreaterThanOrEqualTo(BigAmountHelper(amount) ? 1 : 2))}
                   className={classes.button}
                 >
                   {messages.Back}
@@ -173,7 +175,7 @@ const DepositStepper = React.memo(({
                     disabled={stake.isLoading}
                     variant="contained"
                     color="primary"
-                    onClick={() => onStake(new BigNumber(amount * (10 ** 18)).toFixed(0))}
+                    onClick={() => onStake(BigAmountHelper(amount).toFixed(0))}
                     className={classes.button}
                   >
                     { stake.isLoading && messages.Staking }

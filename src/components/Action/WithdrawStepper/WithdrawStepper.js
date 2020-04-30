@@ -4,10 +4,10 @@ import {
   StepContent, Typography, Slider, CircularProgress,
 } from '@material-ui/core';
 import numeral from 'numeral';
-import BigNumber from 'bignumber.js';
 
 import extProps from './propTypes';
 import { checkAsyncWithdrawIsDone, timeoutRedirect } from './logic';
+import BigAmountHelper from '../../../utils/BigAmountHelper';
 
 /*
  *
@@ -70,7 +70,8 @@ const WithdrawStepper = React.memo(({
               type="number"
               placeholder={maxAmount}
               className={classes.inputLRC}
-              onChange={(e) => setAmount(e.target.value <= maxAmount ? e.target.value : maxAmount)}
+              onChange={(e) => setAmount(e.target.value <= maxAmount
+                ? e.target.value * 1 : maxAmount * 1)}
             />
             <Slider
               value={!maxAmount ? 0 : Math.round((amount / maxAmount) * 100)}
@@ -129,7 +130,7 @@ const WithdrawStepper = React.memo(({
                     disabled={withdraw.isLoading}
                     variant="contained"
                     color="primary"
-                    onClick={() => onWithdraw(new BigNumber(amount * (10 ** 18)).toFixed(0))}
+                    onClick={() => onWithdraw(BigAmountHelper(amount).toFixed(0))}
                     className={classes.button}
                   >
                     { withdraw.isLoading && messages.Withdrawing }
