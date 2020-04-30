@@ -162,7 +162,8 @@ const DepositStepper = React.memo(({
                   // if not redirect to step enter amount
                 }
                 <Button
-                  onClick={() => setStep(allowance.value / (10 ** 18) >= amount ? 1 : 2)}
+                  onClick={() => setStep(new BigNumber(allowance.value)
+                    .isGreaterThanOrEqualTo(new BigNumber(amount * (10 ** 18))) ? 1 : 2)}
                   className={classes.button}
                 >
                   {messages.Back}
