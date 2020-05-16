@@ -107,13 +107,13 @@ const Profile = React.memo(({
       <SwitchShowDollar onSwitch={onSetIsShowDollar} isShowDollar={isShowDollar} />
       <ShortAddressCopyButton messages={messages} walletAddress={walletAddress} />
       <div className={classes.divYourStake}>
-        <AmountSpan title={messages['Your Stake']} number={stake} messages={messages} isShowLoopring isXl isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
+        <AmountSpan title={messages['Your Stake']} number={stake} messages={messages} isShowLoopring isXl isLoading={isLoading} loopringPrice={isShowDollar ? loopringPrice : 0} />
       </div>
 
       <div className="divider my-4" />
       <Grid container spacing={4}>
         <Grid item xs={12} sm={6}>
-          <AmountSpan title={messages['Your Pending Reward']} number={pendingReward} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
+          <AmountSpan title={messages['Your Pending Reward']} number={pendingReward} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar ? loopringPrice : 0} />
         </Grid>
         <Grid item xs={12} sm={6}>
           <AmountSpan title={messages['Your Token Age']} number={tokenAge} isDay format="(0.0a)" isLoading={isChartLoading} loopringPrice={0} />
@@ -122,10 +122,10 @@ const Profile = React.memo(({
       <div className="divider my-4" />
       <Grid container spacing={4}>
         <Grid item xs={12} sm={4}>
-          <AmountSpan title={messages['Total Stake']} number={stakeTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
+          <AmountSpan title={messages['Total Stake']} number={stakeTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar ? loopringPrice : 0} />
         </Grid>
         <Grid item xs={12} sm={4}>
-          <AmountSpan title={messages['Total Reward']} number={feesTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar && loopringPrice} />
+          <AmountSpan title={messages['Total Reward']} number={feesTotal} isShowLoopring isLoading={isLoading} loopringPrice={isShowDollar ? loopringPrice : 0} />
         </Grid>
         <Grid item xs={12} sm={4}>
           <AmountSpan title={messages['Your Share']} number={share} isPercent isLoading={isChartLoading} format="(0.000a)" loopringPrice={0} />

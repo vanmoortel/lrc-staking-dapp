@@ -96,7 +96,7 @@ const ProfileContainer = () => {
       stakeTotal={totalStake.value.balance / (10 ** 18)}
       stake={(yourStake.value.balance || 0) / (10 ** 18)}
       pendingReward={(yourStake.value.pendingReward) / (10 ** 18)}
-      share={yourShare || 0}
+      share={yourShare * 1 || 0}
       tokenAge={yourTokenAge || 0}
       walletAddress={walletAddress.value}
       tokenAgeList={tokenAgeList || []}
@@ -104,8 +104,8 @@ const ProfileContainer = () => {
       onLogout={() => logout(0)}
       isLoading={!feeStats.isLoaded || !totalStake.isLoaded || !yourStake.isLoaded}
       isChartLoading={!stakeList.isLoaded}
-      isShowDollar={(isShowDollar || { value: false }).value}
-      loopringPrice={(isShowDollar || { price: 0 }).price}
+      isShowDollar={isShowDollar.value}
+      loopringPrice={isShowDollar.price}
       onSetIsShowDollar={setIsShowPrice}
     />
   );
