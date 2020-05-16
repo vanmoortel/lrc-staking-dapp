@@ -3,7 +3,7 @@ import { sendContractType } from '../../../utils/type';
 
 const propTypes = {
   classes: PropTypes.object.isRequired,
-  maxAmount: PropTypes.number.isRequired,
+  maxAmount: PropTypes.string.isRequired,
   messages: PropTypes.object.isRequired,
   onDone: PropTypes.func.isRequired,
   onWithdraw: PropTypes.func.isRequired,

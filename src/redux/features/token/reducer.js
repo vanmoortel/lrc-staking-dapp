@@ -9,9 +9,9 @@ import { SETTINGS_LOGOUT } from '../settings/action';
 import { fetchInitial, sendInitial } from '../../../utils/initialStateHelper';
 
 const initialState = {
-  allowance: fetchInitial(0),
+  allowance: fetchInitial('0'),
   approve: sendInitial(),
-  balance: fetchInitial(0),
+  balance: fetchInitial('0'),
   contract: null,
 };
 
@@ -26,8 +26,8 @@ const reducer = (state = initialState, action) => {
     case onError(SETTINGS_LOGOUT):
       return {
         ...state,
-        allowance: fetchInitial(0),
-        balance: fetchInitial(0),
+        allowance: fetchInitial('0'),
+        balance: fetchInitial('0'),
       };
     case TOKEN_GET_ALLOWANCE:
       return {
@@ -36,7 +36,7 @@ const reducer = (state = initialState, action) => {
           ...state.allowance,
           error: null,
           isLoading: true,
-          value: 0,
+          value: '0',
         },
       };
     case onSuccess(TOKEN_GET_ALLOWANCE):
@@ -58,7 +58,7 @@ const reducer = (state = initialState, action) => {
           error: action.data,
           isLoaded: false,
           isLoading: false,
-          value: 0,
+          value: '0',
         },
       };
     case TOKEN_GET_BALANCE:
@@ -68,7 +68,7 @@ const reducer = (state = initialState, action) => {
           ...state.balance,
           error: null,
           isLoading: true,
-          value: 0,
+          value: '0',
         },
       };
     case onSuccess(TOKEN_GET_BALANCE):
@@ -90,7 +90,7 @@ const reducer = (state = initialState, action) => {
           error: action.data,
           isLoaded: false,
           isLoading: false,
-          value: 0,
+          value: '0',
         },
       };
     case TOKEN_DO_APPROVE:

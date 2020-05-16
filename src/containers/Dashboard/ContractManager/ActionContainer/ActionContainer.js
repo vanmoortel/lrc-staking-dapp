@@ -79,10 +79,10 @@ const ActionContainer = () => {
       withdraw={withdraw}
       onClaim={doClaim}
       onWithdraw={doWithdraw}
-      pendingReward={(yourStake.value.pendingReward || 0) / (10 ** 18)}
-      yourStake={(yourStake.value.balance || 0) / (10 ** 18)}
-      withdrawTime={yourStake.value.withdrawalWaitTime || 90 * 24 * 60 * 60}
-      claimTime={yourStake.value.rewardWaitTime || 90 * 24 * 60 * 60}
+      pendingReward={(yourStake.value.pendingReward || '0')}
+      yourStake={(yourStake.value.balance || '0')}
+      withdrawTime={yourStake.value.withdrawalWaitTime * 1 || 90 * 24 * 60 * 60}
+      claimTime={yourStake.value.rewardWaitTime * 1 || 90 * 24 * 60 * 60}
     />
   );
 };

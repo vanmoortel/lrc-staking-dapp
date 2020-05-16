@@ -38,7 +38,7 @@ const reducer = (state = initialState, action) => {
           ...state.totalStake,
           error: null,
           isLoading: true,
-          value: 0,
+          value: {},
         },
       };
     case onSuccess(STAKING_GET_TOTAL_STAKE):
@@ -60,7 +60,7 @@ const reducer = (state = initialState, action) => {
           error: action.data,
           isLoaded: false,
           isLoading: false,
-          value: 0,
+          value: {},
         },
       };
     case STAKING_GET_YOUR_STAKE:
