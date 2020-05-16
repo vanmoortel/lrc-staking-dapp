@@ -32,7 +32,7 @@ const AmountSpan = React.memo(({
                   <img alt="Loopring logo" className={classes.loopringLogo} src={lrc} height="16px" />
                 ) }
                 { (isShowLoopring && !!loopringPrice) && (
-                  <FontAwesomeIcon className={classes.iconDollar} size={16} icon={['fas', 'dollar-sign']} />
+                  <FontAwesomeIcon className={classes.iconDollar} icon={['fas', 'dollar-sign']} />
                 ) }
                 <span className={`font-weight-bold 
               ${isXl ? 'font-size-xl' : 'font-size-lg'} 
