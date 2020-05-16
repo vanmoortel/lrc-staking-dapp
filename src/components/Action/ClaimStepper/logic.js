@@ -1,12 +1,18 @@
+export const STEP = {
+  CLAIM: 1,
+  DISCLAIMER: 0,
+  DONE: 2,
+};
+
 // Wait claim is done and go to next step if no error
 export const checkAsyncClaimIsDone = (step, isClaiming, claim,
   onSetIsClaiming, onSetIsDone, onSetStep) => {
-  if (step === 1 && !isClaiming && claim.isLoading) onSetIsClaiming(true);
-  if (step === 1 && !claim.isLoading && isClaiming) {
+  if (step === STEP.CLAIM && !isClaiming && claim.isLoading) onSetIsClaiming(true);
+  if (step === STEP.CLAIM && !claim.isLoading && isClaiming) {
     onSetIsClaiming(false);
     if (!claim.error) {
       onSetIsDone(true);
-      onSetStep(2);
+      onSetStep(STEP.DONE);
     }
   }
 };

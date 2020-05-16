@@ -10,6 +10,7 @@ import ActionButton from './ActionButton';
 import DepositStepper from './DepositStepper';
 import ClaimStepper from './ClaimStepper';
 import WithdrawStepper from './WithdrawStepper';
+import { safeAmountDecimal } from '../../utils/BigAmountHelper';
 
 /*
  *
@@ -47,7 +48,7 @@ const Action = React.memo(({
         isShowDeposit && (
           <DepositStepper
             messages={messages}
-            maxAmount={balance.value / (10 ** 18)}
+            maxAmount={safeAmountDecimal(balance.value)}
             allowance={allowance}
             onApprove={onApprove}
             onStake={onStake}
@@ -62,7 +63,7 @@ const Action = React.memo(({
         isShowClaim && (
           <ClaimStepper
             messages={messages}
-            pendingReward={pendingReward}
+            pendingReward={safeAmountDecimal(pendingReward)}
             onClaim={onClaim}
             claim={claim}
             onDone={() => setIsShowClaim(false)}
@@ -74,7 +75,7 @@ const Action = React.memo(({
         isShowWithdraw && (
           <WithdrawStepper
             messages={messages}
-            maxAmount={yourStake}
+            maxAmount={safeAmountDecimal(yourStake)}
             onWithdraw={onWithdraw}
             withdraw={withdraw}
             onDone={() => setIsShowWithdraw(false)}

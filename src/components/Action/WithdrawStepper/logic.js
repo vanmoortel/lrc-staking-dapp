@@ -1,12 +1,19 @@
+export const STEP = {
+  AMOUNT: 1,
+  DISCLAIMER: 0,
+  DONE: 3,
+  WITHDRAW: 2,
+};
+
 // Wait withdraw is done and go to next step if no error
 export const checkAsyncWithdrawIsDone = (step, isWithdrawing, withdraw,
   onSetIsWithdrawing, onSetIsDone, onSetStep) => {
-  if (step === 3 && !isWithdrawing && withdraw.isLoading) onSetIsWithdrawing(true);
-  if (step === 3 && !withdraw.isLoading && isWithdrawing) {
+  if (step === STEP.WITHDRAW && !isWithdrawing && withdraw.isLoading) onSetIsWithdrawing(true);
+  if (step === STEP.WITHDRAW && !withdraw.isLoading && isWithdrawing) {
     onSetIsWithdrawing(false);
     if (!withdraw.error) {
       onSetIsDone(true);
-      onSetStep(3);
+      onSetStep(STEP.DONE);
     }
   }
 };

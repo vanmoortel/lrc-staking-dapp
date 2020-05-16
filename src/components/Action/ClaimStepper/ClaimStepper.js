@@ -6,7 +6,7 @@ import {
 import numeral from 'numeral';
 
 import extProps from './propTypes';
-import { checkAsyncClaimIsDone, autoRedirect } from './logic';
+import { checkAsyncClaimIsDone, autoRedirect, STEP } from './logic';
 
 /*
  *
@@ -48,7 +48,7 @@ const ClaimStepper = React.memo(({
                   disabled={!pendingReward}
                   variant="contained"
                   color="primary"
-                  onClick={() => setStep(1)}
+                  onClick={() => setStep(STEP.CLAIM)}
                   className={classes.button}
                 >
                   {messages['I understand']}
@@ -71,7 +71,7 @@ const ClaimStepper = React.memo(({
             <div className={classes.actionsContainer}>
               <div className={classes.divBackAndConfirm}>
                 <Button
-                  onClick={() => setStep(0)}
+                  onClick={() => setStep(STEP.DISCLAIMER)}
                   className={classes.button}
                 >
                   {messages.Back}

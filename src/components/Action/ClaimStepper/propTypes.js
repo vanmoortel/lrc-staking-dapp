@@ -7,7 +7,7 @@ const propTypes = {
   messages: PropTypes.object.isRequired,
   onClaim: PropTypes.func.isRequired,
   onDone: PropTypes.func.isRequired,
-  pendingReward: PropTypes.number.isRequired,
+  pendingReward: PropTypes.string.isRequired,
 };
 
 export default propTypes;

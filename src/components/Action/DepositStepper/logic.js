@@ -1,21 +1,28 @@
-import BigNumber from 'bignumber.js';
-import BigAmountHelper from '../../../utils/BigAmountHelper';
+import { safeAmount } from '../../../utils/BigAmountHelper';
+
+export const STEP = {
+  AMOUNT: 1,
+  APPROVAL: 2,
+  DISCLAIMER: 0,
+  DONE: 4,
+  STAKE: 3,
+};
 
 // Skip the step of approving if already approved
 export const checkEnoughAllowanceRedirectToStakeStep = (amount, allowance, step, onSetStep) => {
-  if (!!amount && new BigNumber(allowance.value).isGreaterThanOrEqualTo(BigAmountHelper(amount))
-    && step === 2) onSetStep(3);
+  if (amount.isGreaterThan(0) && safeAmount(allowance.value).isGreaterThanOrEqualTo(amount)
+    && step === STEP.APPROVAL) onSetStep(STEP.STAKE);
 };
 
 // Wait stake is done and go to next step if no error
 export const checkAsyncStakeIsDone = (step, isStaking, stake,
   onSetIsStaking, onSetIsDone, onSetStep) => {
-  if (step === 3 && !isStaking && stake.isLoading) onSetIsStaking(true);
-  if (step === 3 && !stake.isLoading && isStaking) {
+  if (step === STEP.STAKE && !isStaking && stake.isLoading) onSetIsStaking(true);
+  if (step === STEP.STAKE && !stake.isLoading && isStaking) {
     onSetIsStaking(false);
     if (!stake.error) {
       onSetIsDone(true);
-      onSetStep(4);
+      onSetStep(STEP.DONE);
     }
   }
 };

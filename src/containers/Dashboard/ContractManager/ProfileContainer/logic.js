@@ -1,5 +1,5 @@
 import Moment from 'moment';
-import BigNumber from 'bignumber.js';
+import { safeAmount } from '../../../../utils/BigAmountHelper';
 
 // Fetch the total amount stake in staking pool only if not already done
 export const oneTimeFetchTotalStake = (stakingContract, totalStake, onGetTotalStake) => {
@@ -61,8 +61,8 @@ export const computeYourShareAndYourTokenAge = (stakeList, yourStake, yourShare,
       totalPoint += (_stake.balance / (10 ** 18)) * (today.diff(Moment.unix(_stake.claimedAt), 'hour') / 24);
     });
   }
-  const updatedYourShare = new BigNumber(!yourPoint ? 0
-    : (yourPoint / totalPoint) * 100).toFixed(4);
+  const updatedYourShare = !yourPoint ? 0 : safeAmount(yourPoint)
+    .div(totalPoint).multipliedBy(100).toFixed(4);
   onSetYourShare(updatedYourShare || 0);
   onSetYourTokenAge(!yourPoint ? 0 : updatedYourTokenAge);
 };
