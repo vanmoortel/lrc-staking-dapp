@@ -4,6 +4,7 @@ export default (theme) => ({
   },
   iconDollar: {
     color: theme.palette.primary.main,
+    height: 16,
     marginRight: 4,
   },
   loopringLogo: {

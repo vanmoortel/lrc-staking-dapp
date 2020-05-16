@@ -19,7 +19,7 @@ const WithdrawStepper = React.memo(({
   classes, messages, maxAmount, onWithdraw, withdraw, onDone,
 }) => {
   const [step, setStep] = useState(0);
-  const [amount, setAmount] = useState(safeAmount(0));
+  const [amount, setAmount] = useState('0');
   const [isWithdrawing, setIsWithdrawing] = useState(false);
   const [isDone, setIsDone] = useState(false);
 
@@ -63,7 +63,7 @@ const WithdrawStepper = React.memo(({
           <StepContent>
             <Typography>{messages['Please fill in the amount of LRC you want to withdraw.']}</Typography>
             <TextField
-              value={safeAmountToPrint(amount)}
+              value={amount}
               variant="outlined"
               label="Amount"
               fullWidth
@@ -72,11 +72,11 @@ const WithdrawStepper = React.memo(({
               className={classes.inputLRC}
               onChange={(e) => setAmount(safeAmount(e.target.value || 0)
                 .isLessThanOrEqualTo(maxAmount)
-                ? safeAmount(e.target.value) : safeAmount(maxAmount))}
+                ? e.target.value : safeAmountToPrint(maxAmount))}
             />
             <Slider
               value={safeAmount(maxAmount).isZero()
-                ? 0 : amount.div(maxAmount).multipliedBy(100).toFixed(0) * 1}
+                ? 0 : safeAmount(amount).div(maxAmount).multipliedBy(100).toFixed(0) * 1}
               defaultValue={0}
               valueLabelFormat={(value) => `${value}%`}
               getAriaValueText={() => '%'}
@@ -85,8 +85,8 @@ const WithdrawStepper = React.memo(({
               valueLabelDisplay="auto"
               marks={[{ label: '0%', value: 0 }, { label: '25%', value: 25 }, { label: '50%', value: 50 }, { label: '75%', value: 75 }, { label: '100%', value: 100 }]}
               className={classes.sliderAmount}
-              onChange={(_, value) => setAmount(safeAmount(maxAmount)
-                .multipliedBy(value / 100))}
+              onChange={(_, value) => setAmount(safeAmountToPrint(safeAmount(maxAmount)
+                .multipliedBy(value / 100)))}
             />
             <div className={classes.actionsContainer}>
               <div>
@@ -97,7 +97,7 @@ const WithdrawStepper = React.memo(({
                   {messages.Back}
                 </Button>
                 <Button
-                  disabled={amount.isLessThanOrEqualTo(0)}
+                  disabled={safeAmount(amount).isLessThanOrEqualTo(0)}
                   variant="contained"
                   color="primary"
                   onClick={() => setStep(STEP.WITHDRAW)}
@@ -114,7 +114,7 @@ const WithdrawStepper = React.memo(({
           <StepContent>
             <Typography>
               <span className={`font-weight-bold ${classes.spanAmount}`}>
-                {numeral(safeAmountToPrint(amount)).format('(0.00a)')}
+                {numeral(amount).format('(0.00a)')}
                 {' '}
                 LRC
               </span>

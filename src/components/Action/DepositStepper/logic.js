@@ -10,7 +10,7 @@ export const STEP = {
 
 // Skip the step of approving if already approved
 export const checkEnoughAllowanceRedirectToStakeStep = (amount, allowance, step, onSetStep) => {
-  if (amount.isGreaterThan(0) && safeAmount(allowance.value).isGreaterThanOrEqualTo(amount)
+  if (!!amount && safeAmount(allowance.value).isGreaterThanOrEqualTo(amount)
     && step === STEP.APPROVAL) onSetStep(STEP.STAKE);
 };
 
