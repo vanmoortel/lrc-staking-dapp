@@ -9,6 +9,8 @@ export default (theme) => ({
   },
   iconDollar: {
     color: theme.palette.primary.main,
+    height: 16,
+    marginRight: theme.spacing(0.5),
   },
   loopringLogo: {
     marginBottom: 'auto',

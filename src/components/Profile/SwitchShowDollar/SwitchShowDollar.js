@@ -14,7 +14,7 @@ import lrc from '../../../assets/images/loopring/loopring-small-blue.png';
 const SwitchShowDollar = React.memo(({ classes, isShowDollar, onSwitch }) => (
   <div className={classes.divTopRight}>
     { isShowDollar
-      ? (<FontAwesomeIcon className={classes.iconDollar} size={16} icon={['fas', 'dollar-sign']} />)
+      ? (<FontAwesomeIcon className={classes.iconDollar} icon={['fas', 'dollar-sign']} />)
       : (<img alt="Loopring logo" className={classes.loopringLogo} src={lrc} height="16px" />)}
     <Switch
       checked={isShowDollar}
