@@ -1,4 +1,4 @@
-import { safeAmount } from '../../../utils/BigAmountHelper';
+import { safeAmount, safeAmountFixed } from '../../../utils/BigAmountHelper';
 
 export const STEP = {
   AMOUNT: 1,
@@ -10,7 +10,7 @@ export const STEP = {
 
 // Skip the step of approving if already approved
 export const checkEnoughAllowanceRedirectToStakeStep = (amount, allowance, step, onSetStep) => {
-  if (!!amount && safeAmount(allowance.value).isGreaterThanOrEqualTo(amount)
+  if (!!amount && safeAmount(allowance.value).isGreaterThanOrEqualTo(safeAmountFixed(amount))
     && step === STEP.APPROVAL) onSetStep(STEP.STAKE);
 };
 
